@@ -1,6 +1,13 @@
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+/**
+ * 反射可以获取私有的属性和方法。
+ * 创建出来的对象也是不同
+ * jvm-->找相应的class-->加载到内存-->创建对象
+ * @author listener
+ *
+ */
 public class Demo2 {
 	public static String publicStaticString;
 	protected static String protectedStaticString;
@@ -16,15 +23,23 @@ public class Demo2 {
 	public static void main(String[] args) throws Exception {
 		// 第一种方式：
 		c1 = Class.forName("Demo2");
-			
+		System.out.println(c1.newInstance().toString());
+		System.out.println(c1.getClassLoader().toString());
+		c1 = Class.forName("Demo2");
+		System.out.println(c1.newInstance().toString());
+		System.out.println(c1.getClassLoader().toString());
 		// 第二种方式：
 		// java中每个类型都有class 属性.
 		c1= Demo2.class;
-
+		System.out.println(c1.newInstance().toString());
+		System.out.println(c1.getClassLoader().toString());
 		// 第三种方式：
 		// java语言中任何一个java对象都有getClass 方法
 		Demo2 e= new Demo2();
 		c1 = e.getClass(); // c3是运行时类 (e的运行时类是Employee)
+		System.out.println(e);
+		System.out.println(c1.newInstance().toString());
+		System.out.println(c1.getClassLoader().toString());
 		
 		System.out.println("---------获取所有自身属性------------");
 		for (Field string : c1.getDeclaredFields()) {
