@@ -15,6 +15,7 @@ public class Thread4 {
         }
         //πÿ±’œﬂ≥Ã≥ÿ
         executorService.shutdown();
+        System.out.println('a'+1);
     }
 }
  
