@@ -15,7 +15,7 @@ public class Developer implements IDeveloper{
 
 	@Override
 	public void writeCode() {
-		System.out.println("Developer " + name + " writes code");
+		//System.out.println("Developer " + name + " writes code");
 	}
 
 }

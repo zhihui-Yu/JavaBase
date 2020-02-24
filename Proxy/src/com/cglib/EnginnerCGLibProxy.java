@@ -21,7 +21,7 @@ public class EnginnerCGLibProxy {
 		enhancer.setCallback(new MethodInterceptor() {
 			@Override
 			public Object intercept(Object obj, Method method, Object[] args, MethodProxy proxy) throws Throwable {
-				System.out.println("cglib : Enginner writes document");
+				//System.out.println("cglib : Enginner writes document");
 				Object res = method.invoke(target, args);
 				return res;
 			}

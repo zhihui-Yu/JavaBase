@@ -19,9 +19,15 @@ public class EnginnerProxy implements InvocationHandler {
 		.getClass().getInterfaces(), this);
 	}
 	
+	
+	/**
+	 * proxy : 对象的代理类
+	 * method : 对象的方法
+	 * args : 方法的参数
+	 */
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-		System.out.println("jdk : Enginner writes document");
+		//System.out.println("jdk : Enginner writes document");
 		Object res = method.invoke(obj, args);
 		return res;
 	}
