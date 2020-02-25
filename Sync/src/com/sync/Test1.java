@@ -27,15 +27,21 @@ public class Test1 implements Runnable {
 	@Override
 	public void run() {
 		for (int j = 0; j < 1000000; j++) {
-			increase2();
+			increase();
+			//increase2();
 		}
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		Thread t1 = new Thread(new Test1());
-		Thread t2 = new Thread(new Test1());
+		Test1 test = new Test1();
+		Test1 test2 = new Test1();
+		Thread t1 = new Thread(test);
+		Thread t2 = new Thread(test);
+		//不同对象调用 同步方法不可以，静态同步方法就可以，因为静态同步方法 锁住的class
+		//Thread t3 = new Thread(test2);
 		t1.start();
 		t2.start();
+		//等待执行
 		t1.join();
 		t2.join();
 		System.out.println(i);
