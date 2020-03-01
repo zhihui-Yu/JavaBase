@@ -1,14 +1,14 @@
 package com.createThread;
 
-//¼Ì³ĞThreadÀàÀ´´´½¨Ïß³Ì
+//ç»§æ‰¿Threadç±»æ¥åˆ›å»ºçº¿ç¨‹
 public class Thread1 {
 
   public static void main(String[] args) {
-      //ÉèÖÃÏß³ÌÃû×Ö
+      //è®¾ç½®çº¿ç¨‹åå­—
       Thread.currentThread().setName("main thread");
       MyThread myThread = new MyThread();
-      myThread.setName("×ÓÏß³Ì:");
-      //¿ªÆôÏß³Ì
+      myThread.setName("å­çº¿ç¨‹:");
+      //å¼€å¯çº¿ç¨‹
       myThread.start();
       for(int i = 0;i<5;i++){
           System.out.println(Thread.currentThread().getName() + i);
@@ -17,7 +17,7 @@ public class Thread1 {
 }
 
 class MyThread extends Thread{
-  //ÖØĞ´run()·½·¨
+  //é‡å†™run()æ–¹æ³•
   public void run(){
       for(int i = 0;i < 10; i++){
           System.out.println(Thread.currentThread().getName() + i);

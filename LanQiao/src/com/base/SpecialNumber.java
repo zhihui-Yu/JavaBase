@@ -5,11 +5,11 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * ÌØÊâ»ØÎÄ 123321ÊÇÒ»¸ö·Ç³£ÌØÊâµÄÊý£¬Ëü´Ó×ó±ß¶ÁºÍ´ÓÓÒ±ß¶ÁÊÇÒ»ÑùµÄ¡£ ÊäÈëÒ»¸öÕýÕûÊýn£¬ ±à³ÌÇóËùÓÐÕâÑùµÄÎåÎ»ºÍÁùÎ»Ê®½øÖÆÊý£¬Âú×ã¸÷Î»Êý×ÖÖ®ºÍµÈÓÚn¡£
+ * ç‰¹æ®Šå›žæ–‡ 123321æ˜¯ä¸€ä¸ªéžå¸¸ç‰¹æ®Šçš„æ•°ï¼Œå®ƒä»Žå·¦è¾¹è¯»å’Œä»Žå³è¾¹è¯»æ˜¯ä¸€æ ·çš„ã€‚ è¾“å…¥ä¸€ä¸ªæ­£æ•´æ•°nï¼Œ ç¼–ç¨‹æ±‚æ‰€æœ‰è¿™æ ·çš„äº”ä½å’Œå…­ä½åè¿›åˆ¶æ•°ï¼Œæ»¡è¶³å„ä½æ•°å­—ä¹‹å’Œç­‰äºŽnã€‚
  * 
- * Àý£º ÊäÈë 55 Êä³ö£º899998 989989 998899
+ * ä¾‹ï¼š è¾“å…¥ 55 è¾“å‡ºï¼š899998 989989 998899
  * 
- * Êä³öË³Ðò£º ´ÓÐ¡µ½´ó
+ * è¾“å‡ºé¡ºåºï¼š ä»Žå°åˆ°å¤§
  * 
  * @author listener
  *
@@ -23,16 +23,16 @@ public class SpecialNumber {
 
 		sc.close();
 
-		// Êý×Ö³¤¶È
+		// æ•°å­—é•¿åº¦
 		int len = 0;
 
-		// ·ÅÊý×ÖµÄ¼¯ºÏ
+		// æ”¾æ•°å­—çš„é›†åˆ
 		Set<Integer> set = new TreeSet<>();
 
-		// ÅÐ¶ÏÊÇ²»ÊÇ»ØÎÄ
+		// åˆ¤æ–­æ˜¯ä¸æ˜¯å›žæ–‡
 		boolean flag = false;
 
-		// ±£´æ»ØÎÄµÄºÍ
+		// ä¿å­˜å›žæ–‡çš„å’Œ
 		int numSum = 0;
 
 		for (int i = 10000; i < 1000000; i++) {
@@ -41,41 +41,41 @@ public class SpecialNumber {
 
 			len = str.length() - 1;
 
-			// ÅÐ¶ÏÊý×ÖÊÇ²»ÊÇ»ØÎÄ
+			// åˆ¤æ–­æ•°å­—æ˜¯ä¸æ˜¯å›žæ–‡
 			for (int j = 0; j < len - 1; j++) {
-				// Ê×Î²ÏàµÈ
+				// é¦–å°¾ç›¸ç­‰
 				if (str.charAt(j) == str.charAt(len - j)) {
 					flag = true;
 				} else {
-					// ÓÐÒ»´Î²»ÏàµÈ¾Í ÍË³ö
+					// æœ‰ä¸€æ¬¡ä¸ç›¸ç­‰å°± é€€å‡º
 					flag = false;
 					break;
 				}
 			}
 
-			// ÊÇ»ØÎÄ»¹ÒªÅÐ¶ÏÊý×ÖÏà¼ÓÊÇ²»ÊÇµÈÓÚÊäÈëÖµ
+			// æ˜¯å›žæ–‡è¿˜è¦åˆ¤æ–­æ•°å­—ç›¸åŠ æ˜¯ä¸æ˜¯ç­‰äºŽè¾“å…¥å€¼
 			if (flag) {
 
-				// Çå¿Õ
+				// æ¸…ç©º
 				numSum = 0;
-				// ½«ËùÓÐÊý×ÖÏà¼Ó
+				// å°†æ‰€æœ‰æ•°å­—ç›¸åŠ 
 				for (int j = 0; j <= len; j++) {
 					numSum += getInt(str.charAt(j));
 				}
 				
 				//System.out.println(numSum);
 				
-				// ÅÐ¶ÏÊý×ÖºÍÊÇ²»ÊÇÏàµÈ
+				// åˆ¤æ–­æ•°å­—å’Œæ˜¯ä¸æ˜¯ç›¸ç­‰
 				if (numSum != sum) {
 					flag = false;
 				}
 			}
-			//ÏàµÈ ¼´±£´æ
+			//ç›¸ç­‰ å³ä¿å­˜
 			if (flag) {
 				set.add(Integer.parseInt(str));
 			}
 		}
-		// Êä³ö
+		// è¾“å‡º
 		for (Integer in : set) {
 			System.out.println(in);
 		}

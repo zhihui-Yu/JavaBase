@@ -26,40 +26,40 @@ public class JinZhi3 {
 			return ;
 		}
 		
-		// ÓàÊý
+		// ä½™æ•°
 		int temp = 0;
-		//ÉÌ
+		//å•†
 		int l = 0;
 		
 		while (six > 16) {
 			
-			//ÉÌ
+			//å•†
 			l = six / 16;
 
-			//ÓàÊý
+			//ä½™æ•°
 			temp = six - l*16;
 
-			// ÓÒÒÆËÄÎ»
+			// å³ç§»å››ä½
 			six = l;
 
-			// ÅÐ¶Ï×Ö·û
+			// åˆ¤æ–­å­—ç¬¦
 			if (temp < 10) {
 				sb.append(temp);
 			} else {
 				sb.append(getNum(temp));
 			}
 		}
-		//»ñÈ¡×îºóµÄÊý  ps£º¿ÉÄÜÉÏÃæÑ­»·Ã»×ß£¬ËùÒÔl¿ÉÄÜÊÇ0
+		//èŽ·å–æœ€åŽçš„æ•°  psï¼šå¯èƒ½ä¸Šé¢å¾ªçŽ¯æ²¡èµ°ï¼Œæ‰€ä»¥lå¯èƒ½æ˜¯0
 		l = six%16;
 		
-		//Ìí¼Ó×îºóµÄÊý×Ö
+		//æ·»åŠ æœ€åŽçš„æ•°å­—
 		sb.append(l<10 ? l : getNum(l));
 		
-		//Èç¹û¸ÕºÃÕû³ý  ÐèÒªÔÚÄ©Î²¼Ó1
+		//å¦‚æžœåˆšå¥½æ•´é™¤  éœ€è¦åœ¨æœ«å°¾åŠ 1
 		if(l==0){
 			sb.append("1");
 		}
-		//·´ÏòÊä³ö
+		//åå‘è¾“å‡º
 		System.out.println(sb.reverse().toString());
 
 	}

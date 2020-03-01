@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * ¸ø¶¨Ò»¸ö³¤¶ÈÎªnµÄÊıÁĞ£¬½«Õâ¸öÊıÁĞ°´´ÓĞ¡µ½´óµÄË³ĞòÅÅÁĞ¡£1<=n<=200
+ * ç»™å®šä¸€ä¸ªé•¿åº¦ä¸ºnçš„æ•°åˆ—ï¼Œå°†è¿™ä¸ªæ•°åˆ—æŒ‰ä»å°åˆ°å¤§çš„é¡ºåºæ’åˆ—ã€‚1<=n<=200
  * @author listener
  *
  */
@@ -12,15 +12,15 @@ public class SortArr {
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		//»ñÈ¡Êı×é³¤¶È
+		//è·å–æ•°ç»„é•¿åº¦
 		int n = sc.nextInt();
-		//´´½¨Êı×é
+		//åˆ›å»ºæ•°ç»„
 		int[] arr = new int[n];
-		//½«ÊäÈëµÄÊı¾İ²åÈëÊı×é
+		//å°†è¾“å…¥çš„æ•°æ®æ’å…¥æ•°ç»„
 		for (int i = 0; i < n; i++) {
 			arr[i] = sc.nextInt();
 		}
-		//¹Ø±ÕÁ÷
+		//å…³é—­æµ
 		sc.close();
 		//Arrays.sort(arr);
 		sort(arr, 0, arr.length-1);
@@ -28,44 +28,44 @@ public class SortArr {
 			System.out.print(i+" ");
 		}
 	}
-	//¿ìÅÅ
+	//å¿«æ’
 	// 6 2 3 1
 	public static void sort(int[] arr,int start, int end){
 		int top = start;
 		int last = end;
 		
-		//Èç¹ûÇ°ÃæµÄÖ¸Õë´óÓÚºóÃæ£¬ËµÃ÷½áÊøÁË
+		//å¦‚æœå‰é¢çš„æŒ‡é’ˆå¤§äºåé¢ï¼Œè¯´æ˜ç»“æŸäº†
 		if(start > end) {
 			return;
 		}
-		//»ùÊı
+		//åŸºæ•°
 		int temp = arr[start];
 		
-		//Ã»ÓĞ½áÊø  ¸Ä±äÖ¸ÕëµÄÎ»ÖÃ
+		//æ²¡æœ‰ç»“æŸ  æ”¹å˜æŒ‡é’ˆçš„ä½ç½®
 		while (start < end) {
-			//´ÓÇ°Íùºó±éÀú ÉıĞò
+			//ä»å‰å¾€åéå† å‡åº
 			while (start < end && temp < arr[end]){
 				end = end - 1;
 			}
-			//Ñ­»·½áÊø£¬±íÊ¾ÕÒÍêÁË
-			//ÔÚ·¶Î§ÄÚµÄ»°£¬¾ÍËµÃ÷ÓĞ½»»»³öÏÖ
+			//å¾ªç¯ç»“æŸï¼Œè¡¨ç¤ºæ‰¾å®Œäº†
+			//åœ¨èŒƒå›´å†…çš„è¯ï¼Œå°±è¯´æ˜æœ‰äº¤æ¢å‡ºç°
 			if(start < end ){
 				arr[start] = arr[end];
 				start = start + 1;
 			}
 			
-			//´ÓºóÍùÇ°ÕÒ
+			//ä»åå¾€å‰æ‰¾
 			while (start < end && temp > arr[start]) {
 				start ++;
 			}
-			//Èç¹ûÓĞ½»»»
+			//å¦‚æœæœ‰äº¤æ¢
 			if(start < end ){
 				arr[end] = arr[start];
 				end --;
 			}
 		}
 		arr[end] = temp;
-		//µÚÒ»¸öÊı½»»»Íê ±éÀúÆäËûµÄ
+		//ç¬¬ä¸€ä¸ªæ•°äº¤æ¢å®Œ éå†å…¶ä»–çš„
 		sort(arr, top, start-1);
 		sort(arr, start+1, last);
 	}

@@ -11,34 +11,34 @@ public class Test1 {
 			temp--;
 		}
 		/**
-		 * ÕÒµ½Á¬ÐøµÄ×Ö¶Î£¬ÉýÐò½µÐò¶¼¿ÉÒÔ
-		 * ×îºóÒ»¸ö¿ÉÒÔÓÃ²»×Å
+		 * æ‰¾åˆ°è¿žç»­çš„å­—æ®µï¼Œå‡åºé™åºéƒ½å¯ä»¥
+		 * æœ€åŽä¸€ä¸ªå¯ä»¥ç”¨ä¸ç€
 		 */
 		for (int i = 0; i < arr.length-1; i++) {
 			temp = i;
 			count = 0;
-			//Èç¹ûºóÃæ´ó,Ôò±£´æÊýµ½¸ÃÊý×ÖµÄºóÃæ
+			//å¦‚æžœåŽé¢å¤§,åˆ™ä¿å­˜æ•°åˆ°è¯¥æ•°å­—çš„åŽé¢
 			while(i < arr.length-1 && arr[i+1][0] >= arr[i][0] ){
 				arr[temp][++count] = arr[++i][0];
 			}
 			if(temp != i) {
-				//½øÐÐºóÃæÒ»¸öµÄ±È½Ï
+				//è¿›è¡ŒåŽé¢ä¸€ä¸ªçš„æ¯”è¾ƒ
 				i = i + 1;
-				//tempÎªºóÒ»¸öµÄÏÂ±ê
+				//tempä¸ºåŽä¸€ä¸ªçš„ä¸‹æ ‡
 				temp = i;
 				count = 0; 
 			}
-			//±ÈºóÃæÐ¡µÄÊ±ºò
+			//æ¯”åŽé¢å°çš„æ—¶å€™
 			while(i < arr.length -1 && arr[i+1][0] <= arr[i][0] ){
 				arr[temp][++count] = arr[++i][0];
 			}
 			/*if(temp != i){
-				//½øÐÐºóÃæÒ»¸öµÄ±È½Ï
+				//è¿›è¡ŒåŽé¢ä¸€ä¸ªçš„æ¯”è¾ƒ
 				i = 1 + i;
 			}*/
 		}
 		count = 0;
-		//Èç¹û³¤¶È´óÓÚ2 ÔòËµÃ÷ºóÃæÓÐÌí¼ÓÊý
+		//å¦‚æžœé•¿åº¦å¤§äºŽ2 åˆ™è¯´æ˜ŽåŽé¢æœ‰æ·»åŠ æ•°
 		for (int i = 0; i < arr.length; i++) {
 			if(arr[i][1] != 0){
 				count ++;

@@ -3,14 +3,14 @@ package com.createThread;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.FutureTask;
-//ÊµÏÖCallable½Ó¿Ú
+//å®ç°Callableæ¥å£
 public class Thread3 {
  
     public static void main(String[] args) {
-        //Ö´ĞĞCallable ·½Ê½£¬ĞèÒªFutureTask ÊµÏÖÊµÏÖ£¬ÓÃÓÚ½ÓÊÕÔËËã½á¹û
+        //æ‰§è¡ŒCallable æ–¹å¼ï¼Œéœ€è¦FutureTask å®ç°å®ç°ï¼Œç”¨äºæ¥æ”¶è¿ç®—ç»“æœ
         FutureTask<Integer> futureTask = new FutureTask<Integer>(new MyCallable());
         new Thread(futureTask).start();
-        //½ÓÊÕÏß³ÌÔËËãºóµÄ½á¹û
+        //æ¥æ”¶çº¿ç¨‹è¿ç®—åçš„ç»“æœ
         try {
             Integer sum = futureTask.get();
             System.out.println(sum);

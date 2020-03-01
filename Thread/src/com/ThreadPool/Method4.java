@@ -5,12 +5,12 @@ import java.util.concurrent.Executors;
 
 public class Method4 {
 
-	//µ¥Ïß³ÌµÄÏß³Ì³Ø£¬Ïß³ÌÒì³£½áÊø£¬»á´´½¨Ò»¸öĞÂµÄÏß³Ì£¬ÄÜÈ·±£ÈÎÎñ°´Ìá½»Ë³ĞòÖ´ĞĞ
+	//å•çº¿ç¨‹çš„çº¿ç¨‹æ± ï¼Œçº¿ç¨‹å¼‚å¸¸ç»“æŸï¼Œä¼šåˆ›å»ºä¸€ä¸ªæ–°çš„çº¿ç¨‹ï¼Œèƒ½ç¡®ä¿ä»»åŠ¡æŒ‰æäº¤é¡ºåºæ‰§è¡Œ
 	static ExecutorService singleExecutor = Executors.newSingleThreadExecutor();
 	
 	
 	public static void main(String[] args) {
-	//²âÊÔµ¥Ïß³ÌµÄÏß³Ì³Ø
+	//æµ‹è¯•å•çº¿ç¨‹çš„çº¿ç¨‹æ± 
 		for (int i = 0; i < 3; i++) {
 			final int index = i;
 			singleExecutor.execute(new Runnable() {
@@ -30,7 +30,7 @@ public class Method4 {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("4Ãëºó...");
+		System.out.println("4ç§’å...");
 		
 		singleExecutor.shutdown();
 	}

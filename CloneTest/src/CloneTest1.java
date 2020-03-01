@@ -1,6 +1,6 @@
 /**
- * Ç³¿½±´
- * 		¿½±´¶ÔÏóµÄÒıÓÃ¶ÔÏó³ÉÔ±±äÁ¿µÄµØÖ·Ò²¿½±´£¬µ¼ÖÂµ±Ô­¶ÔÏóĞŞ¸ÄÒıÓÃ¶ÔÏó±äÁ¿Ê±£¬¿ËÂ¡¶ÔÏóµÄÒıÓÃ¶ÔÏó±äÁ¿Ò²¸ú×Å¸Ä±äÁË¡£
+ * æµ…æ‹·è´
+ * 		æ‹·è´å¯¹è±¡çš„å¼•ç”¨å¯¹è±¡æˆå‘˜å˜é‡çš„åœ°å€ä¹Ÿæ‹·è´ï¼Œå¯¼è‡´å½“åŸå¯¹è±¡ä¿®æ”¹å¼•ç”¨å¯¹è±¡å˜é‡æ—¶ï¼Œå…‹éš†å¯¹è±¡çš„å¼•ç”¨å¯¹è±¡å˜é‡ä¹Ÿè·Ÿç€æ”¹å˜äº†ã€‚
  * @author listener
  *
  */
@@ -12,16 +12,16 @@ public class CloneTest1 {
 		
 		User userClone = (User) user.clone();
 		
-		System.out.println("Ô­user£º" + user);
-		System.out.println("¿ËÂ¡µÄuser£º" + userClone);
+		System.out.println("åŸuserï¼š" + user);
+		System.out.println("å…‹éš†çš„userï¼š" + userClone);
 		
-		// ĞŞ¸ÄÒıÓÃÀàĞÍµÄmarkÊôĞÔ
+		// ä¿®æ”¹å¼•ç”¨ç±»å‹çš„markå±æ€§
 		user.mark.setMath(60);
 		
-		System.out.println("ĞŞ¸ÄºóµÄÔ­user£º" + user);
-		System.out.println("ĞŞ¸ÄºóµÄ¿ËÂ¡user£º" + userClone);
+		System.out.println("ä¿®æ”¹åçš„åŸuserï¼š" + user);
+		System.out.println("ä¿®æ”¹åçš„å…‹éš†userï¼š" + userClone);
 		
-		//À´¿´¿´ËûÃÇµÄµØÖ·
+		//æ¥çœ‹çœ‹ä»–ä»¬çš„åœ°å€
 	}
 }
 
@@ -44,7 +44,7 @@ class Mark {
 
 	@Override
 	public String toString() {
-		return "Mark{" + "chinese=" + chinese + ", math=" + math + '}'+"µØÖ·£º"+super.toString();
+		return "Mark{" + "chinese=" + chinese + ", math=" + math + '}'+"åœ°å€ï¼š"+super.toString();
 	}
 }
 
@@ -62,7 +62,7 @@ class User implements Cloneable {
 	@Override
 	public String toString() {
 		
-		return "User{" + "name='" + name + '\'' + ", age=" + age + ", mark=" + mark + '}'+"µØÖ·£º"+super.toString();
+		return "User{" + "name='" + name + '\'' + ", age=" + age + ", mark=" + mark + '}'+"åœ°å€ï¼š"+super.toString();
 	}
 
 	@Override

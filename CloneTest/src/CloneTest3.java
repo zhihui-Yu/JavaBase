@@ -5,7 +5,7 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 /**
- * Éî¿½±´ Ö® ĞòÁĞ»¯
+ * æ·±æ‹·è´ ä¹‹ åºåˆ—åŒ–
  * @author listener
  *
  */
@@ -13,27 +13,27 @@ public class CloneTest3
 {
 	public static void main(String[] args) throws Exception
 	{
-		//´´½¨¶ÔÏó
+		//åˆ›å»ºå¯¹è±¡
 		Teacher3 teacher3 = new Teacher3();
 		teacher3.setAge(23);
-		teacher3.setName("ÀîÀÏÊ¦");
+		teacher3.setName("æè€å¸ˆ");
 		
 		Student3 student3 = new Student3();
 		student3.setAge(20);
-		student3.setName("ÍõÎå");
+		student3.setName("ç‹äº”");
 		student3.setTeacher3(teacher3);
 		
-		//¿½±´
+		//æ‹·è´
 		Student3 student4 = (Student3)student3.deepCopy();
 		
-		System.out.println("----------¿½±´Íê-----------");
+		System.out.println("----------æ‹·è´å®Œ-----------");
 		System.out.println(student3);
 		System.out.println(student4);
 		
-		System.out.println("-----------ĞŞ¸ÄÖµ------------");
+		System.out.println("-----------ä¿®æ”¹å€¼------------");
 		
 		student4.getTeacher3().setAge(60);
-		student4.getTeacher3().setName("ÕÔÀÏÊ¦");
+		student4.getTeacher3().setName("èµµè€å¸ˆ");
 		
 		System.out.println(student3);
 		System.out.println(student4);
@@ -64,7 +64,7 @@ class Teacher3 implements Serializable
 	}
 	@Override
 	public String toString() {
-		return "Teacher3 [age=" + age + ", name=" + name + "]"+"µØÖ·£º"+super.toString();
+		return "Teacher3 [age=" + age + ", name=" + name + "]"+"åœ°å€ï¼š"+super.toString();
 	}
 	
 }
@@ -102,19 +102,19 @@ class Student3 implements Serializable
 		
 		@Override
 		public String toString() {
-			return "Student3 [age=" + age + ", name=" + name + ", teacher3=" + teacher3 + "]"+"µØÖ·£º"+super.toString();
+			return "Student3 [age=" + age + ", name=" + name + ", teacher3=" + teacher3 + "]"+"åœ°å€ï¼š"+super.toString();
 		}
 		
-		//Ê¹µÃĞòÁĞ»¯student3µÄÊ±ºòÒ²»á½«teacherĞòÁĞ»¯
+		//ä½¿å¾—åºåˆ—åŒ–student3çš„æ—¶å€™ä¹Ÿä¼šå°†teacheråºåˆ—åŒ–
 		public Object deepCopy()throws Exception
 		{
-			//½«µ±Ç°Õâ¸ö¶ÔÏóĞ´µ½Ò»¸öÊä³öÁ÷µ±ÖĞ£¬£¬ÒòÎªÕâ¸ö¶ÔÏóµÄÀàÊµÏÖÁËSerializableÕâ¸ö½Ó¿Ú£¬ËùÒÔÔÚÕâ¸öÀàÖĞ
-			//ÓĞÒ»¸öÒıÓÃ£¬Õâ¸öÒıÓÃÈç¹ûÊµÏÖÁËĞòÁĞ»¯£¬ÄÇÃ´Õâ¸öÒ²»áĞ´µ½Õâ¸öÊä³öÁ÷µ±ÖĞ
+			//å°†å½“å‰è¿™ä¸ªå¯¹è±¡å†™åˆ°ä¸€ä¸ªè¾“å‡ºæµå½“ä¸­ï¼Œï¼Œå› ä¸ºè¿™ä¸ªå¯¹è±¡çš„ç±»å®ç°äº†Serializableè¿™ä¸ªæ¥å£ï¼Œæ‰€ä»¥åœ¨è¿™ä¸ªç±»ä¸­
+			//æœ‰ä¸€ä¸ªå¼•ç”¨ï¼Œè¿™ä¸ªå¼•ç”¨å¦‚æœå®ç°äº†åºåˆ—åŒ–ï¼Œé‚£ä¹ˆè¿™ä¸ªä¹Ÿä¼šå†™åˆ°è¿™ä¸ªè¾“å‡ºæµå½“ä¸­
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			ObjectOutputStream  oos = new ObjectOutputStream(bos);
 			oos.writeObject(this);
 			
-			//Õâ¸ö¾ÍÊÇ½«Á÷ÖĞµÄ¶«Î÷¶Á³öÀà£¬¶Áµ½Ò»¸ö¶ÔÏóÁ÷µ±ÖĞ£¬ÕâÑù¾Í¿ÉÒÔ·µ»ØÕâÁ½¸ö¶ÔÏóµÄ¶«Î÷£¬ÊµÏÖÉî¿ËÂ¡
+			//è¿™ä¸ªå°±æ˜¯å°†æµä¸­çš„ä¸œè¥¿è¯»å‡ºç±»ï¼Œè¯»åˆ°ä¸€ä¸ªå¯¹è±¡æµå½“ä¸­ï¼Œè¿™æ ·å°±å¯ä»¥è¿”å›è¿™ä¸¤ä¸ªå¯¹è±¡çš„ä¸œè¥¿ï¼Œå®ç°æ·±å…‹éš†
 			ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
 			ObjectInputStream ois = new ObjectInputStream(bis);
 			return ois.readObject();

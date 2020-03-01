@@ -19,17 +19,17 @@ public class Test {
 	
 	public static void main(String[] args) {
 		
-		// Ô­À´ĞèÒªÖ¸¶¨ÈËÔ± È»ºóµ÷ÓÃÖ¸¶¨ÈËÔ±µÄ·½·¨
+		// åŸæ¥éœ€è¦æŒ‡å®šäººå‘˜ ç„¶åè°ƒç”¨æŒ‡å®šäººå‘˜çš„æ–¹æ³•
 		IDeveloper jerry = new Developer("Jerry");
 		jerry.writeCode();
 		System.out.println("===============================");
-		// ¾²Ì¬´úÀí
-		// Ö»ÒªÖ¸¶¨ÈËÔ±£¬ µ÷·½·¨µÄÊÂÇéÈÃ´úÀíÀàÀ´×ö¡£
+		// é™æ€ä»£ç†
+		// åªè¦æŒ‡å®šäººå‘˜ï¼Œ è°ƒæ–¹æ³•çš„äº‹æƒ…è®©ä»£ç†ç±»æ¥åšã€‚
 		IDeveloper jerryProxy = new DeveloperProxy(jerry);
 		jerryProxy.writeCode();
 		
 		System.out.println("===============================");
-		//jdk´úÀí ±ØĞëÊµÏÖinvocationHandler 
+		//jdkä»£ç† å¿…é¡»å®ç°invocationHandler 
 		IDeveloper jerryProxy2 = (IDeveloper) new EnginnerProxy().bind(jerry);
 		startTime = System.currentTimeMillis();
 		for (int i = 0; i < size; i++) {
@@ -39,7 +39,7 @@ public class Test {
 		System.out.println("jdk "+(endTime-startTime));
 		
 		System.out.println("===============================");
-		//cglib ²»ÄÜ´úÀífinalÀà
+		//cglib ä¸èƒ½ä»£ç†finalç±»
 		IDeveloper jerryProxy3 = (IDeveloper) new EnginnerCGLibProxy().bind(jerry);
 		startTime = System.currentTimeMillis();
 		for (int i = 0; i < size; i++) {

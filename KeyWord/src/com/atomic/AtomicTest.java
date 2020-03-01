@@ -3,11 +3,11 @@ package com.atomic;
 import java.util.concurrent.atomic.AtomicInteger;
  
 /**
- * JDK Ô­×ÓÀà²âÊÔ
+ * JDK åŸå­ç±»æµ‹è¯•
  * 
- * ÀûÓÃCASÎŞËøËã·¨ÊµÏÖÔ­×ÓĞÔ
+ * åˆ©ç”¨CASæ— é”ç®—æ³•å®ç°åŸå­æ€§
  * 
- * CAS£º ÄÚ´æÖµºÍ¾ÉÖµ±È½Ï£¬ÏàÍ¬¾Í¿ÉÒÔ¼Ó1£¬²»Í¬¾ÍÖØÊÔ¡£
+ * CASï¼š å†…å­˜å€¼å’Œæ—§å€¼æ¯”è¾ƒï¼Œç›¸åŒå°±å¯ä»¥åŠ 1ï¼Œä¸åŒå°±é‡è¯•ã€‚
  * @author listener
  *
  */
@@ -22,25 +22,25 @@ public class AtomicTest {
     private AtomicInteger count = new AtomicInteger(0);
     
     public int getAndIncrement() {
-    	//µ×²ãÊÇCAS·½·¨
+    	//åº•å±‚æ˜¯CASæ–¹æ³•
         return count.getAndIncrement();
     }
     
     public static void main(String[] args) {
         final AtomicTest test = new AtomicTest();
-        //´´½¨Èı¸öÏß³Ì
+        //åˆ›å»ºä¸‰ä¸ªçº¿ç¨‹
         for (int i = 0; i <3; i++) {
             new Thread(){
                 @Override
                 public void run() {
-                	//×Ô¼Ó10´Î
+                	//è‡ªåŠ 10æ¬¡
                     for (int j = 0; j <10; j++) {
                         try {
                             Thread.sleep(100);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        System.out.println(Thread.currentThread().getName() + " »ñÈ¡µİÔöÖµ£º" + test.getAndIncrement());
+                        System.out.println(Thread.currentThread().getName() + " è·å–é€’å¢å€¼ï¼š" + test.getAndIncrement());
                     }
                 }
             }.start();

@@ -1,7 +1,7 @@
 package com.sync;
 
 /**
- * Í¬²½´úÂë¿é
+ * åŒæ­¥ä»£ç å—
  * @author listener
  *
  */
@@ -11,8 +11,8 @@ public class Test3 implements Runnable {
 
 	@Override
 	public void run() {
-		// Ê¹ÓÃÍ¬²½´úÂë¿é¶Ô±äÁ¿i½øĞĞÍ¬²½²Ù×÷,Ëø¶ÔÏóÎªinstance
-		//this ºÍinstance ¶¼ÊÇÒ»ÑùµÄ 
+		// ä½¿ç”¨åŒæ­¥ä»£ç å—å¯¹å˜é‡iè¿›è¡ŒåŒæ­¥æ“ä½œ,é”å¯¹è±¡ä¸ºinstance
+		//this å’Œinstance éƒ½æ˜¯ä¸€æ ·çš„ 
 		//synchronized (instance) {
 		synchronized (this) {
 			for (int j = 0; j < 1000000; j++) {

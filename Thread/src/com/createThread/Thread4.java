@@ -2,18 +2,18 @@ package com.createThread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-//Ïß³Ì³ØÊµÏÖ
+//çº¿ç¨‹æ± å®žçŽ°
 public class Thread4 {
  
     public static void main(String[] args) {
-        //´´½¨Ïß³Ì³Ø
+        //åˆ›å»ºçº¿ç¨‹æ± 
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         ThreadPool threadPool = new ThreadPool();
         for(int i =0;i<5;i++){
-            //ÎªÏß³Ì³Ø·ÖÅäÈÎÎñ
+            //ä¸ºçº¿ç¨‹æ± åˆ†é…ä»»åŠ¡
             executorService.submit(threadPool);
         }
-        //¹Ø±ÕÏß³Ì³Ø
+        //å…³é—­çº¿ç¨‹æ± 
         executorService.shutdown();
         System.out.println('a'+1);
     }

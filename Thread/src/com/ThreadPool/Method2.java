@@ -5,12 +5,12 @@ import java.util.concurrent.Executors;
 
 public class Method2 {
 
-	//可缓存的线程池，如果线程池的容量超过了任务数，自动回收空闲线程，任务增加时可以自动添加新线程，线程池的容量不限制
+	//鍙紦瀛樼殑绾跨▼姹狅紝濡傛灉绾跨▼姹犵殑瀹归噺瓒呰繃浜嗕换鍔℃暟锛岃嚜鍔ㄥ洖鏀剁┖闂茬嚎绋嬶紝浠诲姟澧炲姞鏃跺彲浠ヨ嚜鍔ㄦ坊鍔犳柊绾跨▼锛岀嚎绋嬫睜鐨勫閲忎笉闄愬埗
 	static ExecutorService cachedExecutor = Executors.newCachedThreadPool();
 	
 	
 	public static void main(String[] args) {
-	//测试可缓存线程池
+	//娴嬭瘯鍙紦瀛樼嚎绋嬫睜
 		for (int i = 0; i < 6; i++) {
 			final int index = i;
 			cachedExecutor.execute(new Runnable() {
@@ -30,7 +30,7 @@ public class Method2 {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println(Thread.currentThread().getName() + "4秒后...");
+		System.out.println(Thread.currentThread().getName() + "4绉掑悗...");
 		
 		cachedExecutor.shutdown();
 	}

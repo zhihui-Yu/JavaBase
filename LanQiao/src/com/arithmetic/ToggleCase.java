@@ -3,10 +3,10 @@ package com.arithmetic;
 import java.util.Scanner;
 
 /**
- * ´óĞ¡Ğ´»¥»»
+ * å¤§å°å†™äº’æ¢
  * 
- * ´óĞ´£º65 - 90
- * Ğ¡Ğ´£º97 - 121
+ * å¤§å†™ï¼š65 - 90
+ * å°å†™ï¼š97 - 121
  * 
  * @author listener
  *
@@ -20,11 +20,11 @@ public class ToggleCase {
 		sc.close();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < str.length(); i++) {
-			//Ğ¡Ğ´
+			//å°å†™
 			if(str.charAt(i)+1 > 65 && str.charAt(i)+1 < 91){
 				sb.append((char)(str.charAt(i) + 32));
 			}
-			//´óĞ´
+			//å¤§å†™
 			if(str.charAt(i)+1 > 97 && str.charAt(i)+1 < 121){
 				sb.append((char)(str.charAt(i) - 32));
 			}

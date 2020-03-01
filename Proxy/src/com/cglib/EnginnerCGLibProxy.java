@@ -7,7 +7,7 @@ import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 
 /**
- * cglib ¶¯Ì¬´úÀí
+ * cglib åŠ¨æ€ä»£ç†
  * @author listener
  *
  */

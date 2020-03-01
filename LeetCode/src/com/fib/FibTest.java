@@ -3,7 +3,7 @@ package com.fib;
 import java.util.Arrays;
 
 /**
- * Ñ°ÕÒ×î³¤µÄfibÊıÁĞ
+ * å¯»æ‰¾æœ€é•¿çš„fibæ•°åˆ—
  * @author listener
  *
  */
@@ -28,7 +28,7 @@ public class FibTest {
 				tem2 = A[j];
 				sum = tem1 + tem2;
 				len = 2;
-				//Ñ°ÕÒÓësumÆ¥ÅäµÄÊı
+				//å¯»æ‰¾ä¸sumåŒ¹é…çš„æ•°
 				while (Arrays.binarySearch(A, sum) > 0) {
 					tem1 = tem2;
 					tem2 = sum;

@@ -6,15 +6,15 @@ import java.util.concurrent.TimeUnit;
 
 public class Method3 {
 	 
-	//¶¨³¤Ïß³Ì³Ø£¬¿ÉÖ´ĞĞÖÜÆÚĞÔµÄÈÎÎñ
+	//å®šé•¿çº¿ç¨‹æ± ï¼Œå¯æ‰§è¡Œå‘¨æœŸæ€§çš„ä»»åŠ¡
 	static ScheduledExecutorService scheduledExecutor = Executors.newScheduledThreadPool(3);
 	
 	
 	public static void main(String[] args) {
-	//²âÊÔ¶¨³¤¡¢¿ÉÖÜÆÚÖ´ĞĞµÄÏß³Ì³Ø
+	//æµ‹è¯•å®šé•¿ã€å¯å‘¨æœŸæ‰§è¡Œçš„çº¿ç¨‹æ± 
 		for (int i = 0; i < 3; i++) {
 			final int index = i;
-			//scheduleWithFixedDelay ¹Ì¶¨µÄÑÓ³ÙÊ±¼äÖ´ĞĞÈÎÎñ£» scheduleAtFixedRate ¹Ì¶¨µÄÆµÂÊÖ´ĞĞÈÎÎñ
+			//scheduleWithFixedDelay å›ºå®šçš„å»¶è¿Ÿæ—¶é—´æ‰§è¡Œä»»åŠ¡ï¼› scheduleAtFixedRate å›ºå®šçš„é¢‘ç‡æ‰§è¡Œä»»åŠ¡
 			scheduledExecutor.scheduleWithFixedDelay(new Runnable() {
 				public void run() {
 					System.out.println(Thread.currentThread().getName() + " index:" + index);
@@ -28,7 +28,7 @@ public class Method3 {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("4Ãëºó...");
+		System.out.println("4ç§’å...");
 		
 		//scheduledExecutor.shutdown();
 	}

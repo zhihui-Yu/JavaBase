@@ -10,9 +10,9 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 /**
- * ThreadPoolExecutor ÌØĞÔ²âÊÔ
+ * ThreadPoolExecutor ç‰¹æ€§æµ‹è¯•
  * 
- * submit »á·µ»ØÒ»¸ö½á¹ı£¬execute²»»á£¬ºóÕßĞ§ÂÊ¸ßÒ»µã
+ * submit ä¼šè¿”å›ä¸€ä¸ªç»“è¿‡ï¼Œexecuteä¸ä¼šï¼Œåè€…æ•ˆç‡é«˜ä¸€ç‚¹
  * 
  * @author listener
  */
@@ -23,15 +23,15 @@ public class Test1 {
 
 	public static void main(String[] args) throws InterruptedException, ExecutionException {
 		/**
-		 * µÚÒ»¸ö²ÎÊı£ººËĞÄÏß³ÌÊı
-		 * µÚ¶ş¸ö²ÎÊı£º×î´óÏß³ÌÊı
-		 * µÚÈı¸ö²ÎÊı£º¿ÕÏĞÏß³Ì´æ»îÊ±¼ä
-		 * µÚËÄ¸ö²ÎÊı£º»ØÊÕ¿ÕÏĞÏß³ÌµÄÊ±¼äµ¥Î»
-		 * µÚÎå¸ö²ÎÊı£ºÈÎÎñÖ®Ç°Ç°±£´æÔÚµÄ¶ÓÁĞ sizeÎª10
+		 * ç¬¬ä¸€ä¸ªå‚æ•°ï¼šæ ¸å¿ƒçº¿ç¨‹æ•°
+		 * ç¬¬äºŒä¸ªå‚æ•°ï¼šæœ€å¤§çº¿ç¨‹æ•°
+		 * ç¬¬ä¸‰ä¸ªå‚æ•°ï¼šç©ºé—²çº¿ç¨‹å­˜æ´»æ—¶é—´
+		 * ç¬¬å››ä¸ªå‚æ•°ï¼šå›æ”¶ç©ºé—²çº¿ç¨‹çš„æ—¶é—´å•ä½
+		 * ç¬¬äº”ä¸ªå‚æ•°ï¼šä»»åŠ¡ä¹‹å‰å‰ä¿å­˜åœ¨çš„é˜Ÿåˆ— sizeä¸º10
 		 */
 		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(3, 7, 10, TimeUnit.SECONDS,
 				new LinkedBlockingDeque<>(10));
-		//ÉèÖÃºËĞÄÏß³Ì ½áÊø
+		//è®¾ç½®æ ¸å¿ƒçº¿ç¨‹ ç»“æŸ
 		threadPoolExecutor.allowCoreThreadTimeOut(true);
 		ExecutorCompletionService<String> executorCompletionService = new ExecutorCompletionService<String>(threadPoolExecutor);
 
@@ -45,7 +45,7 @@ public class Test1 {
 						executorCompletionService.submit(testCallable);
 
 						synchronized (test) {
-							System.out.print("+++Ìí¼ÓÈÎÎñ name: " + name);
+							System.out.print("+++æ·»åŠ ä»»åŠ¡ name: " + name);
 							System.out.print(" ActiveCount: " + threadPoolExecutor.getActiveCount());
 							System.out.print(" poolSize: " + threadPoolExecutor.getPoolSize());
 							System.out.print(" queueSize: " + threadPoolExecutor.getQueue().size());
@@ -53,7 +53,7 @@ public class Test1 {
 						}
 					} catch (RejectedExecutionException e) {
 						synchronized (test) {
-							System.out.println("¾Ü¾ø£º" + name);
+							System.out.println("æ‹’ç»ï¼š" + name);
 						}
 					}
 					try {
@@ -69,18 +69,18 @@ public class Test1 {
 		Thread addThread = new Thread(runnable);
 		addThread.start();
 
-		// Ìí¼ÓµÄÈÎÎñÓĞ±»Å×ÆúµÄ¡£taskCount²»Ò»¶¨µÈÓÚÌí¼ÓµÄÈÎÎñ¡£
+		// æ·»åŠ çš„ä»»åŠ¡æœ‰è¢«æŠ›å¼ƒçš„ã€‚taskCountä¸ä¸€å®šç­‰äºæ·»åŠ çš„ä»»åŠ¡ã€‚
 		int completeCount = 0;
 		while (!(completeCount == threadPoolExecutor.getTaskCount() && finishState == 1)) {
 			Future<String> take = executorCompletionService.take();
 			String taskName = take.get();
 			synchronized (test) {
-				System.out.print("---Íê³ÉÈÎÎñ name: " + taskName);
+				System.out.print("---å®Œæˆä»»åŠ¡ name: " + taskName);
 				System.out.print(" ActiveCount: " + threadPoolExecutor.getActiveCount());
 				System.out.print(" poolSize: " + threadPoolExecutor.getPoolSize());
 				System.out.print(" queueSize: " + threadPoolExecutor.getQueue().size());
 				System.out.print(" taskCount: " + threadPoolExecutor.getTaskCount());
-				System.out.println(" finishTask£º" + (++completeCount));
+				System.out.println(" finishTaskï¼š" + (++completeCount));
 
 			}
 		}
@@ -103,7 +103,7 @@ public class Test1 {
 		threadPoolExecutor.shutdown();
 		// Wait for everything to finish. pool shutdown return true
 		while (!threadPoolExecutor.awaitTermination(10, TimeUnit.SECONDS)) {
-			//Ã»ÓĞÍê³É
+			//æ²¡æœ‰å®Œæˆ
 		}
 		System.out.println("complete");
 	}

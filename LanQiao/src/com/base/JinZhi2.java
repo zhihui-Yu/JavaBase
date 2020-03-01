@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * 16 --> 10
  * 
- * ˼· �� ʮ�����Ƶ�ÿ����������Ӧ��ֵ��
+ * 思路 ： 十六进制的每个数乘以相应的值如
  * 	(FF)10 = 15*16^0+15*16^1
  * 
  * @author listener

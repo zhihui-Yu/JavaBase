@@ -1,11 +1,11 @@
 /**
- * ThreadLocal Ã¿¸öÏß³Ì¶¼ÓĞ×Ô¼ºµÄ¸±±¾ ²Ù×÷ºóÓëÆäËûÏß³ÌÎŞ¹Ø
+ * ThreadLocal æ¯ä¸ªçº¿ç¨‹éƒ½æœ‰è‡ªå·±çš„å‰¯æœ¬ æ“ä½œåä¸å…¶ä»–çº¿ç¨‹æ— å…³
  * @author listener
  *
  */
 public class ThreadLocalTest {
 	public static volatile int temp = 0;
-	//Ïß³Ì±¾µØ´æ´¢±äÁ¿
+	//çº¿ç¨‹æœ¬åœ°å­˜å‚¨å˜é‡
 	private static final ThreadLocal<Integer> THREAD_LOCAL_NUM = new ThreadLocal<Integer>() {
 		@Override
 		protected Integer initialValue() {
@@ -14,7 +14,7 @@ public class ThreadLocalTest {
 	};
  
 	public static void main(String[] args) {
-		for (int i = 0; i < 5; i++) {//Æô¶¯Èı¸öÏß³Ì
+		for (int i = 0; i < 5; i++) {//å¯åŠ¨ä¸‰ä¸ªçº¿ç¨‹
 			Thread t = new Thread() {
 				@Override
 				public void run() {
@@ -31,7 +31,7 @@ public class ThreadLocalTest {
 			System.out.println(Thread.currentThread().getName() + " : volatile temp =" + temp);
 	}
 	/**
-	 * Ïß³Ì±¾µØ´æ´¢±äÁ¿¼Ó 5
+	 * çº¿ç¨‹æœ¬åœ°å­˜å‚¨å˜é‡åŠ  5
 	 */
 	private static void add10ByThreadLocal() {
 		for (int i = 0; i < 1; i++) {

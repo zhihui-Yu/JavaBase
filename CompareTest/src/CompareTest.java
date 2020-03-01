@@ -2,17 +2,17 @@ import java.util.Arrays;
 
 public class CompareTest {
 	public static void main(String[] args) {
-		// ¶¨Òå³õÊ¼»¯³¤¶È
+		// å®šä¹‰åˆå§‹åŒ–é•¿åº¦
 		final int STUDENT_NUM = 4;
 		Student[] allStudents = new Student[STUDENT_NUM];
 
-		// ³õÊ¼»¯
+		// åˆå§‹åŒ–
 		allStudents[0] = new Student("00001", "a");
 		allStudents[1] = new Student("00003", "b");
 		allStudents[2] = new Student("00002", "c");
 		allStudents[3] = new Student("00004", "d");
 		
-		// ÅúÁ¿³õÊ¼»¯ÄêÁäºÍ³É¼¨
+		// æ‰¹é‡åˆå§‹åŒ–å¹´é¾„å’Œæˆç»©
 		for (int i = 0; i < allStudents.length; i++) {
 			allStudents[i].setAge(i * 10);
 		}
@@ -20,11 +20,11 @@ public class CompareTest {
 			allStudents[i].setScore(99 - i * 1.5);
 		}
 
-		// °´Ñ§ºÅÉıĞòÅÅĞò
+		// æŒ‰å­¦å·å‡åºæ’åº
 		Arrays.sort(allStudents);
 
-		// ÏÔÊ¾Ñ§ÉúĞÅÏ¢
-		System.out.println("Ñ§ºÅ" + "\tĞÕÃû" + "\tÄêÁä" + "\t³É¼¨");
+		// æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯
+		System.out.println("å­¦å·" + "\tå§“å" + "\tå¹´é¾„" + "\tæˆç»©");
 		for (int i = 0; i < allStudents.length; i++) {
 			System.out.print(allStudents[i]);
 		}

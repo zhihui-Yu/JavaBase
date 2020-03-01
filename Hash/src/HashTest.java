@@ -2,7 +2,7 @@
 public class HashTest {
 	/**
 	 * p --> People@15db9742 p2 --> People@6d06d69c
-	 * ��p = p2ʱ�����ߵ�ָ�����������Ҳһ���ˣ����ԱȽ�����ֵʱ ��������ȵ�
+	 * 当p = p2时，二者的指定对象的索引也一样了，所以比较索引值时 二者是相等的
 	 * @param args
 	 */
 	public static void main(String[] args) {

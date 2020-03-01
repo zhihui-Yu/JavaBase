@@ -1,14 +1,14 @@
 package com.createThread;
 
-//ÊµÏÖRunnable½Ó¿Ú
+//å®ç°Runnableæ¥å£
 public class Thread2 {
 
   public static void main(String[] args) {
-      //ÉèÖÃÏß³ÌÃû×Ö
+      //è®¾ç½®çº¿ç¨‹åå­—
       Thread.currentThread().setName("main thread:");
       Thread thread = new Thread(new MyRunnable());
-      thread.setName("×ÓÏß³Ì:");
-      //¿ªÆôÏß³Ì
+      thread.setName("å­çº¿ç¨‹:");
+      //å¼€å¯çº¿ç¨‹
       thread.start();
       for(int i = 0; i <5;i++){
           System.out.println(Thread.currentThread().getName() + i);

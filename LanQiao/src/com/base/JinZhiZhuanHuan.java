@@ -3,11 +3,11 @@ package com.base;
 import java.util.Scanner;
 
 /**
- * Ê®Áù½øÖÆ×ª°Ë½øÖÆ
+ * åå…­è¿›åˆ¶è½¬å…«è¿›åˆ¶
  * 
- * Ë¼Â· 16 --> 2 -->8
+ * æ€è·¯ 16 --> 2 -->8
  * 
- * Àý×Ó£º
+ * ä¾‹å­ï¼š
  * 	2 
  * 	39 
  * 	123ABC
@@ -42,16 +42,16 @@ public class JinZhiZhuanHuan {
 
 		sc.close();
 
-		// ´æ·Å¶þ½øÖÆ
+		// å­˜æ”¾äºŒè¿›åˆ¶
 		String[] twoArr = new String[n];
 
-		// ´æ·Å°Ë½øÖÆ
+		// å­˜æ”¾å…«è¿›åˆ¶
 		String[] eightArr = new String[n];
 
-		// ·ÅÃ¿´Î°Ë½øÖÆµÄ½á¹û
+		// æ”¾æ¯æ¬¡å…«è¿›åˆ¶çš„ç»“æžœ
 		StringBuilder sb2 = new StringBuilder();
 
-		// ·ÅÃ¿´ÎÈý¸öÊý×Ö
+		// æ”¾æ¯æ¬¡ä¸‰ä¸ªæ•°å­—
 		StringBuilder sb3 = new StringBuilder();
 
 		// 16 --> 2
@@ -61,19 +61,19 @@ public class JinZhiZhuanHuan {
 
 		}
 
-		// ½«¶þ½øÖÆ×ªÎª°Ë½øÖÆ
+		// å°†äºŒè¿›åˆ¶è½¬ä¸ºå…«è¿›åˆ¶
 		for (int i = 0; i < twoArr.length; i++) {
 
-			// ÅÐ¶Ï×Ö·ûÊÇ²»ÊÇ3µÄ±¶Êý
+			// åˆ¤æ–­å­—ç¬¦æ˜¯ä¸æ˜¯3çš„å€æ•°
 			index = twoArr[i].length() % 3 == 0 ? twoArr[i].length() / 3 : (twoArr[i].length() / 3) + 1;
 
-			// ¶Ôsb3Çå¿Õ
+			// å¯¹sb3æ¸…ç©º
 			sb3.delete(0, sb3.length());
 
-			// sb2Çå¿Õ
+			// sb2æ¸…ç©º
 			sb2.delete(0, sb2.length());
 
-			// Èç¹û²»ÊÇ¸ÕºÃ£¬ÔòÔÚÇ°Ãæ¼ÓÈëÏàÓ¦µÄÁã
+			// å¦‚æžœä¸æ˜¯åˆšå¥½ï¼Œåˆ™åœ¨å‰é¢åŠ å…¥ç›¸åº”çš„é›¶
 			if (index != (twoArr[i].length()/3)) {
 
 				if (twoArr[i].length() % 3 == 1) {
@@ -90,27 +90,27 @@ public class JinZhiZhuanHuan {
 			
 			sb3.append(twoArr[i]);
 
-			// ¼ÆËãÃ¿´Î½á¹û·ÅÈësb2
+			// è®¡ç®—æ¯æ¬¡ç»“æžœæ”¾å…¥sb2
 			for (int j = 0; j < index; j++) {
 				sb2.append(twoToEight(twoArr[i].substring(j * 3, j * 3 + 3)));
 			}
 			eightArr[i] = sb2.toString();
 		}
-		// Êä³ö
+		// è¾“å‡º
 		for (String string : eightArr) {
-			//ÅÐ¶ÏµÚÒ»Î»ÊÇ²»ÊÇÁã
+			//åˆ¤æ–­ç¬¬ä¸€ä½æ˜¯ä¸æ˜¯é›¶
 			System.out.println(string.charAt(0)=='0'? string.substring(1,string.length()): string);
 		}
 	}
 
 	/**
-	 * ¶þ½øÖÆ×ª°Ë½øÖÆ
+	 * äºŒè¿›åˆ¶è½¬å…«è¿›åˆ¶
 	 * 
 	 * @param str
 	 * @return
 	 */
 	public static String twoToEight(String str) {
-		// Çå³ýsbÄÚµÄÖµ
+		// æ¸…é™¤sbå†…çš„å€¼
 		sb.delete(0, sb.length());
 
 		for (int i = 0; i < 8; i++) {
@@ -124,13 +124,13 @@ public class JinZhiZhuanHuan {
 	}
 
 	/**
-	 * Ê®Áù×ª¶þ
+	 * åå…­è½¬äºŒ
 	 * 
 	 * @param str
 	 * @return
 	 */
 	public static String sixToTwo(String str) {
-		// Çå³ýsbÄÚµÄÖµ
+		// æ¸…é™¤sbå†…çš„å€¼
 		sb.delete(0, sb.length());
 		for (int i = 0; i < str.length(); i++) {
 			switch (str.charAt(i)) {

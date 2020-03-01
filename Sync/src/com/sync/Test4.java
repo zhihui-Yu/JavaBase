@@ -1,7 +1,7 @@
 package com.sync;
 
 /**
- * ÖØÈëĞÔ£ºÏß³ÌÒÑ¾­ÓÃ»§ËøÁË£¬ÔÙ´ÎÇëÇóËø¶ÔÏó£¬ÔòËãÖØÈë£¬µ«ÊÇÇëÇó»¹ÊÇ»á³É¹¦¡£
+ * é‡å…¥æ€§ï¼šçº¿ç¨‹å·²ç»ç”¨æˆ·é”äº†ï¼Œå†æ¬¡è¯·æ±‚é”å¯¹è±¡ï¼Œåˆ™ç®—é‡å…¥ï¼Œä½†æ˜¯è¯·æ±‚è¿˜æ˜¯ä¼šæˆåŠŸã€‚
  * @author listener
  *
  */
@@ -14,16 +14,16 @@ public class Test4 implements Runnable {
 	public void run() {
 		for (int j = 0; j < 1000000; j++) {
 
-			// this,µ±Ç°ÊµÀı¶ÔÏóËø
+			// this,å½“å‰å®ä¾‹å¯¹è±¡é”
 			synchronized (this) {
 				i++;
-				increase();// synchronizedµÄ¿ÉÖØÈëĞÔ
+				increase();// synchronizedçš„å¯é‡å…¥æ€§
 			}
 		}
 	}
 	
 	/**
-	 * ¾²Ì¬ ÔòËùÓĞ¶ÔÏó¶¼»áÍ¬²½
+	 * é™æ€ åˆ™æ‰€æœ‰å¯¹è±¡éƒ½ä¼šåŒæ­¥
 	 */
 	public static synchronized void increase() {
 		j++;

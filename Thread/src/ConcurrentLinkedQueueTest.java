@@ -9,11 +9,11 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class ConcurrentLinkedQueueTest {
 	public static void main(String[] args) throws InterruptedException {
 
-	    // 1. Ïß³Ì²»°²È«µÄ¼¯ºÏÀàĞÍ
+	    // 1. çº¿ç¨‹ä¸å®‰å…¨çš„é›†åˆç±»å‹
 	    ConcurrentLinkedQueue<Integer> queue = new ConcurrentLinkedQueue<>();
 	    queue.addAll(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20));
 
-	    // 3. ¶àÏß³ÌÇå¿ÕÊı×é
+	    // 3. å¤šçº¿ç¨‹æ¸…ç©ºæ•°ç»„
 	    for (int i = 0; i < 10; i++) {
 	        new Thread(){
 	            @Override
@@ -32,7 +32,7 @@ public class ConcurrentLinkedQueueTest {
 	    }
 
 	    Thread.sleep(1000);
-	    System.out.println("Ê£ÓàÊıÁ¿:" + queue.size());
+	    System.out.println("å‰©ä½™æ•°é‡:" + queue.size());
 	}
 
 }

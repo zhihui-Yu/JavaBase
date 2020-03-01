@@ -4,7 +4,7 @@ public class MathTest {
 		System.out.println(Math.round(-2.5));
 		StringBuilder sb = new StringBuilder(10);
 		sb.append("hello");
-		//sb.capacity() ÒòÎªStringBufferÔÚÎª¶ÔÏó·ÖÅä³¤¶ÈµÄÊ±ºò£¬ÆğÊ¼»á·ÖÅäÒ»¸ö×Ö£¬Ò²¾ÍÊÇÁ½¸ö×Ö½Ú³¤¶È¼´£¨16Î»£©£¬Ã¿Ôö¼ÓÒ»¸ö×Ö·û£¬³¤¶È¾Í»áÔÚ16µÄ»ù´¡ÉÏ¼Ó 12
+		//sb.capacity() å› ä¸ºStringBufferåœ¨ä¸ºå¯¹è±¡åˆ†é…é•¿åº¦çš„æ—¶å€™ï¼Œèµ·å§‹ä¼šåˆ†é…ä¸€ä¸ªå­—ï¼Œä¹Ÿå°±æ˜¯ä¸¤ä¸ªå­—èŠ‚é•¿åº¦å³ï¼ˆ16ä½ï¼‰ï¼Œæ¯å¢åŠ ä¸€ä¸ªå­—ç¬¦ï¼Œé•¿åº¦å°±ä¼šåœ¨16çš„åŸºç¡€ä¸ŠåŠ  12
 		System.out.println("capacity: "+sb.capacity()+"----length: "+sb.length());
 		System.out.println(sb.reverse());
 		String str = "hello";

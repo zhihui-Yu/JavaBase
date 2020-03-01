@@ -3,7 +3,7 @@ package com.in;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 /**
- * ÊäÈëÔ²µÄ°ë¾¶£¬ÇóÃæ»ı¡£±£ÁôĞ¡ÊıµãºóÆßÎ»
+ * è¾“å…¥åœ†çš„åŠå¾„ï¼Œæ±‚é¢ç§¯ã€‚ä¿ç•™å°æ•°ç‚¹åä¸ƒä½
  * 
  * @author listener
  *

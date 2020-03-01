@@ -4,17 +4,17 @@ import java.util.Comparator;
 public class StudentComparatorTest {
 
 	public static void main(String[] args) {
-		// ¶¨Òå³õÊ¼»¯³¤¶È
+		// å®šä¹‰åˆå§‹åŒ–é•¿åº¦
 		final int STUDENT_NUM = 4;
 		Student[] allStudents = new Student[STUDENT_NUM];
 
-		// ³õÊ¼»¯Ñ§ÉúÊı¾İ
+		// åˆå§‹åŒ–å­¦ç”Ÿæ•°æ®
 		allStudents[0] = new Student("00001", "a");
 		allStudents[1] = new Student("00003", "b");
 		allStudents[2] = new Student("00002", "c");
 		allStudents[3] = new Student("00004", "d");
 
-		// ÅúÁ¿³õÊ¼»¯ÄêÁäºÍ³É¼¨
+		// æ‰¹é‡åˆå§‹åŒ–å¹´é¾„å’Œæˆç»©
 		for (int i = 0; i < allStudents.length; i++) {
 			allStudents[i].setAge(i * 10);
 		}
@@ -22,45 +22,45 @@ public class StudentComparatorTest {
 			allStudents[i].setScore(99 - i * 1.5);
 		}
 
-		// °´ĞÕÃûÉıĞòÅÅĞò
+		// æŒ‰å§“åå‡åºæ’åº
 		Arrays.sort(allStudents, new ComparatorWithNameUP());
-		// ÏÔÊ¾Ñ§ÉúĞÅÏ¢
-		System.out.println("°´ĞÕÃûÉıĞòÅÅĞò½á¹û£º");
-		System.out.println("Ñ§ºÅ" + "\tĞÕÃû" + "\tÄêÁä" + "\t³É¼¨");
+		// æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯
+		System.out.println("æŒ‰å§“åå‡åºæ’åºç»“æœï¼š");
+		System.out.println("å­¦å·" + "\tå§“å" + "\tå¹´é¾„" + "\tæˆç»©");
 		for (int i = 0; i < allStudents.length; i++) {
 			System.out.print(allStudents[i]);
 		}
 
-		// °´ĞÕÃû½µĞòÅÅĞò
+		// æŒ‰å§“åé™åºæ’åº
 		Arrays.sort(allStudents, new ComparatorWithNameDown());
-		// ÏÔÊ¾Ñ§ÉúĞÅÏ¢
-		System.out.println("°´ĞÕÃû½µĞòÅÅĞò½á¹û£º");
-		System.out.println("Ñ§ºÅ" + "\tĞÕÃû" + "\tÄêÁä" + "\t³É¼¨");
+		// æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯
+		System.out.println("æŒ‰å§“åé™åºæ’åºç»“æœï¼š");
+		System.out.println("å­¦å·" + "\tå§“å" + "\tå¹´é¾„" + "\tæˆç»©");
 		for (int i = 0; i < allStudents.length; i++) {
 			System.out.print(allStudents[i]);
 		}
 
-		// °´³É¼¨½µĞòÅÅĞò
+		// æŒ‰æˆç»©é™åºæ’åº
 		Arrays.sort(allStudents, new ComparatorWithScoreDown());
-		// ÏÔÊ¾Ñ§ÉúĞÅÏ¢
-		System.out.println("°´³É¼¨½µĞòÅÅĞò½á¹û£º");
-		System.out.println("Ñ§ºÅ" + "\tĞÕÃû" + "\tÄêÁä" + "\t³É¼¨");
+		// æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯
+		System.out.println("æŒ‰æˆç»©é™åºæ’åºç»“æœï¼š");
+		System.out.println("å­¦å·" + "\tå§“å" + "\tå¹´é¾„" + "\tæˆç»©");
 		for (int i = 0; i < allStudents.length; i++) {
 			System.out.print(allStudents[i]);
 		}
 
-		// °´³É¼¨ÉıĞòÅÅĞò
+		// æŒ‰æˆç»©å‡åºæ’åº
 		Arrays.sort(allStudents, new ComparatorWithScoreUp());
-		// ÏÔÊ¾Ñ§ÉúĞÅÏ¢
-		System.out.println("°´³É¼¨ÉıĞòÅÅĞò½á¹û£º");
-		System.out.println("Ñ§ºÅ" + "\tĞÕÃû" + "\tÄêÁä" + "\t³É¼¨");
+		// æ˜¾ç¤ºå­¦ç”Ÿä¿¡æ¯
+		System.out.println("æŒ‰æˆç»©å‡åºæ’åºç»“æœï¼š");
+		System.out.println("å­¦å·" + "\tå§“å" + "\tå¹´é¾„" + "\tæˆç»©");
 		for (int i = 0; i < allStudents.length; i++) {
 			System.out.print(allStudents[i]);
 		}
 	}
 }
 
-// °´ĞÕÃû½øĞĞÉıĞòÅÅĞòµÄÍâ²¿Àà£¬ÓÃComparator½Ó¿Ú
+// æŒ‰å§“åè¿›è¡Œå‡åºæ’åºçš„å¤–éƒ¨ç±»ï¼Œç”¨Comparatoræ¥å£
 class ComparatorWithNameUP implements Comparator<Student> {
 
 	@Override
@@ -69,7 +69,7 @@ class ComparatorWithNameUP implements Comparator<Student> {
 	}
 }
 
-// °´ĞÕÃû½øĞĞ½µĞòÅÅĞòµÄÍâ²¿Àà£¬ÓÃComparator½Ó¿Ú
+// æŒ‰å§“åè¿›è¡Œé™åºæ’åºçš„å¤–éƒ¨ç±»ï¼Œç”¨Comparatoræ¥å£
 class ComparatorWithNameDown implements Comparator<Student> {
 
 	@Override
@@ -78,7 +78,7 @@ class ComparatorWithNameDown implements Comparator<Student> {
 	}
 }
 
-// °´³É¼¨½µĞò
+// æŒ‰æˆç»©é™åº
 class ComparatorWithScoreDown implements Comparator<Student> {
 
 	@Override
@@ -95,7 +95,7 @@ class ComparatorWithScoreDown implements Comparator<Student> {
 
 }
 
-// °´³É¼¨ÉıĞò
+// æŒ‰æˆç»©å‡åº
 class ComparatorWithScoreUp implements Comparator<Student> {
 
 	@Override

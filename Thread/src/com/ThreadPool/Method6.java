@@ -5,14 +5,14 @@ import java.util.concurrent.Executors;
 
 public class Method6 {
 	 
-	//ÈÎÎñÇÔÈ¡Ïß³Ì³Ø
-	//µ±Ö÷Ïß³Ì½áÊø ¾Í½áÊøÁË
+	//ä»»åŠ¡çªƒå–çº¿ç¨‹æ± 
+	//å½“ä¸»çº¿ç¨‹ç»“æŸ å°±ç»“æŸäº†
 	static ExecutorService workStealingExecutor = Executors.newWorkStealingPool();
 	
 	public static void main(String[] args) {
 	
-	//²âÊÔÈÎÎñÇÔÈ¡Ïß³Ì³Ø
-		for (int i = 0; i < 10; i++) {//±¾»ú CPU 8ºË£¬ÕâÀï´´½¨10¸öÈÎÎñ½øĞĞ²âÊÔ
+	//æµ‹è¯•ä»»åŠ¡çªƒå–çº¿ç¨‹æ± 
+		for (int i = 0; i < 10; i++) {//æœ¬æœº CPU 8æ ¸ï¼Œè¿™é‡Œåˆ›å»º10ä¸ªä»»åŠ¡è¿›è¡Œæµ‹è¯•
 			final int index = i;
 			workStealingExecutor.execute(new Runnable() {
 				public void run() {
@@ -27,11 +27,11 @@ public class Method6 {
 		}
 		
 		try {
-			Thread.sleep(4000);//ÕâÀïÖ÷Ïß³Ì²»ĞİÃß£¬²»»áÓĞ´òÓ¡Êä³ö
+			Thread.sleep(4000);//è¿™é‡Œä¸»çº¿ç¨‹ä¸ä¼‘çœ ï¼Œä¸ä¼šæœ‰æ‰“å°è¾“å‡º
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("4Ãëºó...");
+		System.out.println("4ç§’å...");
 		
 //		workStealingExecutor.shutdown();
 	}

@@ -1,5 +1,5 @@
 /**
- * ÊØ»¤Ïß³ÌÖ»ÓĞµ±ËùÓĞÏß³Ì¶¼½áÊøÁË²Å»áÍË³ö¡£
+ * å®ˆæŠ¤çº¿ç¨‹åªæœ‰å½“æ‰€æœ‰çº¿ç¨‹éƒ½ç»“æŸäº†æ‰ä¼šé€€å‡ºã€‚
  * @author listener
  *
  */
@@ -7,7 +7,7 @@ public class DaemonTest {
     public static void main(String[] args){
         System.out.println("main begin....");
         Thread thread = new MyThread();
-        thread.setName("Ïß³ÌA");
+        thread.setName("çº¿ç¨‹A");
         thread.setDaemon(true);
         thread.start();
         System.out.println("main end.....");

@@ -1,12 +1,12 @@
 
-//ÀàÄÚ²¿ÊµÏÖComparable½Ó¿Ú
+//ç±»å†…éƒ¨å®ç°Comparableæ¥å£
 public class Student implements Comparable<Student> {
 	private String ID;
 	private String name;
 	private int age;
 	private Double score;
 
-	// ¶¨ÒåÁ½¸ö¹¹Ôì·½·¨
+	// å®šä¹‰ä¸¤ä¸ªæ„é€ æ–¹æ³•
 	public Student(String ID, String name) {
 		this(ID, name, 0, 0);
 	}
@@ -54,7 +54,7 @@ public class Student implements Comparable<Student> {
 		score = newScore;
 	}
 
-	// ÖØĞ´¶ÔÏó×Ö·û´®±íÊ¾·½·¨
+	// é‡å†™å¯¹è±¡å­—ç¬¦ä¸²è¡¨ç¤ºæ–¹æ³•
 	@Override
 	public String toString() {
 		String info = new String();
@@ -65,11 +65,11 @@ public class Student implements Comparable<Student> {
 	@Override
 	public int compareTo(Student arg0) {
 		System.out.println("======================");
-		// ´ËÖÖĞ´·¨ÎªÉıĞò£¬Èô¸ÄÎªarg0.ID.compareTo(this.ID)ÔòÎª½µĞò
+		// æ­¤ç§å†™æ³•ä¸ºå‡åºï¼Œè‹¥æ”¹ä¸ºarg0.ID.compareTo(this.ID)åˆ™ä¸ºé™åº
 		return this.ID.compareTo(arg0.ID);
 	}
 
-	// °´³É¼¨ÉıĞò
+	// æŒ‰æˆç»©å‡åº
 	// @Override
 	// public int compareTo(Student arg0) {
 	// return this.score.compareTo(arg0.score);

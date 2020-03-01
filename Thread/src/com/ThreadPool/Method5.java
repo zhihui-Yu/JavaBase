@@ -5,15 +5,15 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Method5 {
-	//µ¥Ïß³Ì¿ÉÖ´ĞĞÖÜÆÚĞÔÈÎÎñµÄÏß³Ì³Ø
+	//å•çº¿ç¨‹å¯æ‰§è¡Œå‘¨æœŸæ€§ä»»åŠ¡çš„çº¿ç¨‹æ± 
 	static ScheduledExecutorService singleScheduledExecutor = Executors.newSingleThreadScheduledExecutor();
 	
 	
 	public static void main(String[] args) {
-	//²âÊÔµ¥Ïß³Ì¿ÉÖÜÆÚÖ´ĞĞµÄÏß³Ì³Ø
+	//æµ‹è¯•å•çº¿ç¨‹å¯å‘¨æœŸæ‰§è¡Œçš„çº¿ç¨‹æ± 
 		for (int i = 0; i < 3; i++) {
 			final int index = i;
-			//scheduleWithFixedDelay ¹Ì¶¨µÄÑÓ³ÙÊ±¼äÖ´ĞĞÈÎÎñ£» scheduleAtFixedRate ¹Ì¶¨µÄÆµÂÊÖ´ĞĞÈÎÎñ
+			//scheduleWithFixedDelay å›ºå®šçš„å»¶è¿Ÿæ—¶é—´æ‰§è¡Œä»»åŠ¡ï¼› scheduleAtFixedRate å›ºå®šçš„é¢‘ç‡æ‰§è¡Œä»»åŠ¡
 			singleScheduledExecutor.scheduleAtFixedRate(new Runnable() {
 				public void run() {
 					System.out.println(Thread.currentThread().getName() + " index:" + index);
@@ -26,7 +26,7 @@ public class Method5 {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		System.out.println("4Ãëºó...");
+		System.out.println("4ç§’å...");
 		
 		singleScheduledExecutor.shutdown();
 	}

@@ -4,31 +4,31 @@ import java.util.function.Consumer;
 
 public class ArrayListTest {
 	 private static ArrayList<String> aList = new ArrayList<String>();
-	//Ê¹ÓÃµü´úÆ÷±éÀúÔªËØ¹ı³ÌÖĞ£¬µ÷ÓÃ¼¯ºÏµÄ remove(Object obj) ·½·¨¿ÉÄÜ»á±¨ java.util.ConcurrentModificationException Òì³£
+	//ä½¿ç”¨è¿­ä»£å™¨éå†å…ƒç´ è¿‡ç¨‹ä¸­ï¼Œè°ƒç”¨é›†åˆçš„ remove(Object obj) æ–¹æ³•å¯èƒ½ä¼šæŠ¥ java.util.ConcurrentModificationException å¼‚å¸¸
     public static void main(String[] args) {
         
          aList.add("111");
          aList.add("222");
          aList.add("333");
-         System.out.println("ÒÆ³ıÇ°£º"+aList);
+         System.out.println("ç§»é™¤å‰ï¼š"+aList);
          
          Iterator<String> iterator = aList.iterator();
-         //Ïêµ¥Óë×ÓÏß³ÌÖĞ½øĞĞ±éÀú£¬µ«ÊÇ·¢Éú¸Ä±äºó£¬»áºÍÖ÷Ïß³Ì¶Ô±È£¬Ö¸Õë²»Ò»Ñù±¨´í¡£
+         //è¯¦å•ä¸å­çº¿ç¨‹ä¸­è¿›è¡Œéå†ï¼Œä½†æ˜¯å‘ç”Ÿæ”¹å˜åï¼Œä¼šå’Œä¸»çº¿ç¨‹å¯¹æ¯”ï¼ŒæŒ‡é’ˆä¸ä¸€æ ·æŠ¥é”™ã€‚
          while(iterator.hasNext())
          {
         	 String next = iterator.next();
              if("222".equals(next))
              {	
-            	 //»á±¨Òì³£
+            	 //ä¼šæŠ¥å¼‚å¸¸
             	 //aList.remove("333");
-            	 //»áÉ¾³ıit.next·µ»ØµÄÖµ¡£
+            	 //ä¼šåˆ é™¤it.nextè¿”å›çš„å€¼ã€‚
             	 iterator.remove();          
              }
          }
-         System.out.println("ÒÆ³ıºó£º"+aList);
+         System.out.println("ç§»é™¤åï¼š"+aList);
     }
     
-    //JDK 1.8 Iterator forEachRemaining ·½·¨ÖĞ µ÷ÓÃIterator µÄ remove ·½·¨»á±¨ java.lang.IllegalStateException Òì³£
+    //JDK 1.8 Iterator forEachRemaining æ–¹æ³•ä¸­ è°ƒç”¨Iterator çš„ remove æ–¹æ³•ä¼šæŠ¥ java.lang.IllegalStateException å¼‚å¸¸
     public static void testForEachRemainingIteRemove () {
         final Iterator<String> iterator = aList.iterator();
         iterator.forEachRemaining(new Consumer<String>() {

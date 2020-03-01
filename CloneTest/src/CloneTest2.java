@@ -1,7 +1,7 @@
 /**
- * Éî¸´ÖÆ:
- * 	Ô­¶ÔÏóµÄÒıÓÃ¶ÔÏóÒ²ÊµÏÖÁË¿ËÂ¡
- * µ±Ö»ÓĞÉÙÊıµÄÒıÓÃ¶ÔÏóÊ±ÊÊºÏÕâ¸ö·½·¨¡£
+ * æ·±å¤åˆ¶:
+ * 	åŸå¯¹è±¡çš„å¼•ç”¨å¯¹è±¡ä¹Ÿå®ç°äº†å…‹éš†
+ * å½“åªæœ‰å°‘æ•°çš„å¼•ç”¨å¯¹è±¡æ—¶é€‚åˆè¿™ä¸ªæ–¹æ³•ã€‚
  * @author listener
  *
  */
@@ -18,14 +18,14 @@ public class CloneTest2
 		student2.setName("lisi");
 		student2.setTeacher(teacher);
 		
-		//Éî¿½±´
+		//æ·±æ‹·è´
 		Student2 student3 = (Student2)student2.clone();
 		//
 		System.out.println(student2);
 		System.out.println(student3);
-		//¸Ä±äteacher¶ÔÏóµÄÖµ
-		System.out.println("---------¸Ä±äteacher¶ÔÏóµÄÖµ--------------");
-		teacher.setName("teacher li");//²»»áÓÖÈÎºÎÓ°Ïì
+		//æ”¹å˜teacherå¯¹è±¡çš„å€¼
+		System.out.println("---------æ”¹å˜teacherå¯¹è±¡çš„å€¼--------------");
+		teacher.setName("teacher li");//ä¸ä¼šåˆä»»ä½•å½±å“
 		System.out.println(student2);
 		System.out.println(student3);
 	
@@ -64,16 +64,16 @@ class Student2 implements Cloneable
 	
 	@Override
 	public String toString() {
-		return "Student2 [age=" + age + ", name=" + name + ", teacher=" + teacher + "]"+"µØÖ·£º"+super.toString();
+		return "Student2 [age=" + age + ", name=" + name + ", teacher=" + teacher + "]"+"åœ°å€ï¼š"+super.toString();
 	}
 	@Override
 	public Object clone() throws CloneNotSupportedException
 	{
-		//ÕâÒ»²½·µ»ØµÄÕâ¸östudent2»¹Ö»ÊÇÒ»¸öÇ³¿ËÂ¡£¬
+		//è¿™ä¸€æ­¥è¿”å›çš„è¿™ä¸ªstudent2è¿˜åªæ˜¯ä¸€ä¸ªæµ…å…‹éš†ï¼Œ
 		Student2 student2 = (Student2)super.clone();
-		//ÖØĞÂÉèÖÃTeacherµÄµØÖ·
+		//é‡æ–°è®¾ç½®Teacherçš„åœ°å€
 		student2.setTeacher((Teacher)student2.getTeacher().clone());
-		//Ë«²ã¿ËÂ¡Ê¹µÃÄÇ¸öteacher¶ÔÏóÒ²µÃµ½ÁË¸´ÖÆ
+		//åŒå±‚å…‹éš†ä½¿å¾—é‚£ä¸ªteacherå¯¹è±¡ä¹Ÿå¾—åˆ°äº†å¤åˆ¶
 		return student2;
 	}
 }
@@ -100,7 +100,7 @@ class Teacher implements Cloneable
 	
 	@Override
 	public String toString() {
-		return "Teacher [age=" + age + ", name=" + name + "]"+"µØÖ·£º"+super.toString();
+		return "Teacher [age=" + age + ", name=" + name + "]"+"åœ°å€ï¼š"+super.toString();
 	}
 	@Override
 	public Object clone() throws CloneNotSupportedException

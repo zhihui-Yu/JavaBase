@@ -5,7 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * jdk¶¯Ì¬´úÀí ĞèÒªÊµÏÖinvocationHandler
+ * jdkåŠ¨æ€ä»£ç† éœ€è¦å®ç°invocationHandler
  * @author listener
  *
  */
@@ -21,9 +21,9 @@ public class EnginnerProxy implements InvocationHandler {
 	
 	
 	/**
-	 * proxy : ¶ÔÏóµÄ´úÀíÀà
-	 * method : ¶ÔÏóµÄ·½·¨
-	 * args : ·½·¨µÄ²ÎÊı
+	 * proxy : å¯¹è±¡çš„ä»£ç†ç±»
+	 * method : å¯¹è±¡çš„æ–¹æ³•
+	 * args : æ–¹æ³•çš„å‚æ•°
 	 */
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {

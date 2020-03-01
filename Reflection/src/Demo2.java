@@ -2,9 +2,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 /**
- * ·´Éä¿ÉÒÔ»ñÈ¡Ë½ÓĞµÄÊôĞÔºÍ·½·¨¡£
- * ´´½¨³öÀ´µÄ¶ÔÏóÒ²ÊÇ²»Í¬
- * jvm-->ÕÒÏàÓ¦µÄclass-->¼ÓÔØµ½ÄÚ´æ-->´´½¨¶ÔÏó
+ * åå°„å¯ä»¥è·å–ç§æœ‰çš„å±æ€§å’Œæ–¹æ³•ã€‚
+ * åˆ›å»ºå‡ºæ¥çš„å¯¹è±¡ä¹Ÿæ˜¯ä¸åŒ
+ * jvm-->æ‰¾ç›¸åº”çš„class-->åŠ è½½åˆ°å†…å­˜-->åˆ›å»ºå¯¹è±¡
  * @author listener
  *
  */
@@ -21,40 +21,40 @@ public class Demo2 {
 	
 	
 	public static void main(String[] args) throws Exception {
-		// µÚÒ»ÖÖ·½Ê½£º
+		// ç¬¬ä¸€ç§æ–¹å¼ï¼š
 		c1 = Class.forName("Demo2");
 		System.out.println(c1.newInstance().toString());
 		System.out.println(c1.getClassLoader().toString());
 		c1 = Class.forName("Demo2");
 		System.out.println(c1.newInstance().toString());
 		System.out.println(c1.getClassLoader().toString());
-		// µÚ¶şÖÖ·½Ê½£º
-		// javaÖĞÃ¿¸öÀàĞÍ¶¼ÓĞclass ÊôĞÔ.
+		// ç¬¬äºŒç§æ–¹å¼ï¼š
+		// javaä¸­æ¯ä¸ªç±»å‹éƒ½æœ‰class å±æ€§.
 		c1= Demo2.class;
 		System.out.println(c1.newInstance().toString());
 		System.out.println(c1.getClassLoader().toString());
-		// µÚÈıÖÖ·½Ê½£º
-		// javaÓïÑÔÖĞÈÎºÎÒ»¸öjava¶ÔÏó¶¼ÓĞgetClass ·½·¨
+		// ç¬¬ä¸‰ç§æ–¹å¼ï¼š
+		// javaè¯­è¨€ä¸­ä»»ä½•ä¸€ä¸ªjavaå¯¹è±¡éƒ½æœ‰getClass æ–¹æ³•
 		Demo2 e= new Demo2();
-		c1 = e.getClass(); // c3ÊÇÔËĞĞÊ±Àà (eµÄÔËĞĞÊ±ÀàÊÇEmployee)
+		c1 = e.getClass(); // c3æ˜¯è¿è¡Œæ—¶ç±» (eçš„è¿è¡Œæ—¶ç±»æ˜¯Employee)
 		System.out.println(e);
 		System.out.println(c1.newInstance().toString());
 		System.out.println(c1.getClassLoader().toString());
 		
-		System.out.println("---------»ñÈ¡ËùÓĞ×ÔÉíÊôĞÔ------------");
+		System.out.println("---------è·å–æ‰€æœ‰è‡ªèº«å±æ€§------------");
 		for (Field string : c1.getDeclaredFields()) {
 			System.out.println(string);
 		}
-		System.out.println("---------»ñÈ¡×ÔÉípublicÊôĞÔ------------");
+		System.out.println("---------è·å–è‡ªèº«publicå±æ€§------------");
 		for (Field string : c1.getFields()) {
 			System.out.println(string);
 		}
-		System.out.println("---------»ñÈ¡ËùÓĞ×ÔÉí·½·¨------------");
+		System.out.println("---------è·å–æ‰€æœ‰è‡ªèº«æ–¹æ³•------------");
 		for (Method method : c1.getDeclaredMethods()) {
 			System.out.println(method);
 		}
-		System.out.println("---------»ñÈ¡ËùÒÔÊôÓÚ¸ÃÀàµÄpublic·½·¨------------");
-		//ËùÓĞµÄÀà¶¼»á¼Ì³ĞObject ËùÒÔ»á×Ô¶¯ÊµÏÖequals¡¢wait¡¢notifyµÈ·½·¨
+		System.out.println("---------è·å–æ‰€ä»¥å±äºè¯¥ç±»çš„publicæ–¹æ³•------------");
+		//æ‰€æœ‰çš„ç±»éƒ½ä¼šç»§æ‰¿Object æ‰€ä»¥ä¼šè‡ªåŠ¨å®ç°equalsã€waitã€notifyç­‰æ–¹æ³•
 		for (Method method : c1.getMethods()) {
 			System.out.println(method);
 		}

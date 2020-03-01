@@ -3,11 +3,11 @@ public class Demo1 {
 	public static void main(String[] args) {
 		Class<?> test = Demo1.class;
 		ClassLoader classLoader = test.getClassLoader();
-		//ÒıÓÃ¼ÓÔØÆ÷
+		//å¼•ç”¨åŠ è½½å™¨
 		System.out.println(classLoader.getParent().getParent());
-		//ÍØÕ¹¼ÓÔØÆ÷
+		//æ‹“å±•åŠ è½½å™¨
 		System.out.println(classLoader.getParent());
-		//app¼ÓÔØÆ÷
+		//appåŠ è½½å™¨
 		System.out.println(classLoader);
 	}
 	

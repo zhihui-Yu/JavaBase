@@ -1,25 +1,25 @@
 package com.sync;
 
 /**
- * ĞŞÊÎ·½·¨
+ * ä¿®é¥°æ–¹æ³•
  * @author listener
  *
  */
 public class Test1 implements Runnable {
-	// ¹²Ïí×ÊÔ´(ÁÙ½ç×ÊÔ´)
+	// å…±äº«èµ„æº(ä¸´ç•Œèµ„æº)
 	static int i = 0;
 
 	/**
-	 * synchronized ĞŞÊÎÊµÀı·½·¨
-	 * Ëø×¡µÄÊÇÊµÀı£¬ËùÒÔÍ¬Ò»¸öÊµÀı²ÅÓĞÍ¬²½Ğ§¹û
+	 * synchronized ä¿®é¥°å®ä¾‹æ–¹æ³•
+	 * é”ä½çš„æ˜¯å®ä¾‹ï¼Œæ‰€ä»¥åŒä¸€ä¸ªå®ä¾‹æ‰æœ‰åŒæ­¥æ•ˆæœ
 	 */
 	public synchronized void increase() {
 		i++;
 	}
 	/**
-	 * ĞŞÊÎ¾²Ì¬·½·¨
-	 * Ëø×¡µÄÊÇÀà¶ÔÏó(class ÎÄ¼ş) ²»Í¬ÊµÀı¶¼ÊÇÓÃÁËÍ¬ÑùµÄstatic
-	 * ËùÒÔ¿ÉÒÔÍ¬²½
+	 * ä¿®é¥°é™æ€æ–¹æ³•
+	 * é”ä½çš„æ˜¯ç±»å¯¹è±¡(class æ–‡ä»¶) ä¸åŒå®ä¾‹éƒ½æ˜¯ç”¨äº†åŒæ ·çš„static
+	 * æ‰€ä»¥å¯ä»¥åŒæ­¥
 	 */
 	public static synchronized void increase2() {
 		i++;
@@ -37,16 +37,16 @@ public class Test1 implements Runnable {
 		Test1 test2 = new Test1();
 		Thread t1 = new Thread(test);
 		Thread t2 = new Thread(test);
-		//²»Í¬¶ÔÏóµ÷ÓÃ Í¬²½·½·¨²»¿ÉÒÔ£¬¾²Ì¬Í¬²½·½·¨¾Í¿ÉÒÔ£¬ÒòÎª¾²Ì¬Í¬²½·½·¨ Ëø×¡µÄclass
+		//ä¸åŒå¯¹è±¡è°ƒç”¨ åŒæ­¥æ–¹æ³•ä¸å¯ä»¥ï¼Œé™æ€åŒæ­¥æ–¹æ³•å°±å¯ä»¥ï¼Œå› ä¸ºé™æ€åŒæ­¥æ–¹æ³• é”ä½çš„class
 		//Thread t3 = new Thread(test2);
 		t1.start();
 		t2.start();
-		//µÈ´ıÖ´ĞĞ
+		//ç­‰å¾…æ‰§è¡Œ
 		t1.join();
 		t2.join();
 		System.out.println(i);
 	}
 	/**
-	 * Êä³ö½á¹û: 2000000
+	 * è¾“å‡ºç»“æœ: 2000000
 	 */
 }

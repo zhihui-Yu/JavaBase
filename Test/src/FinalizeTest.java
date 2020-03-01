@@ -1,9 +1,9 @@
 
 public class FinalizeTest {
 	 public static void main(String[] args) throws InterruptedException {
-	        Book book1 = new Book("ÌìÁú°Ë²¿");
+	        Book book1 = new Book("å¤©é¾™å…«éƒ¨");
 	        
-	        new Book("¶ßÀ²aÃÎ");
+	        new Book("å“†å•¦aæ¢¦");
 
 	        System.gc();
 
@@ -26,7 +26,7 @@ class Book {
     }
     
     /**
-     * ×îºóÒ»µÀ±£Ãü»úÖÆ
+     * æœ€åä¸€é“ä¿å‘½æœºåˆ¶
      */
     @Override
     protected void finalize() throws Throwable {

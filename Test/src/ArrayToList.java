@@ -10,39 +10,39 @@ public class ArrayToList {
 	
 	public static void main(String[] args) {
 		
-		//Êı×é×ªlist
+		//æ•°ç»„è½¬list
 		String[] str=new String[] {"hello","world"};
-		//·½Ê½Ò»£ºÊ¹ÓÃforÑ­»·°ÑÊı×éÔªËØ¼Ó½ølist
+		//æ–¹å¼ä¸€ï¼šä½¿ç”¨forå¾ªç¯æŠŠæ•°ç»„å…ƒç´ åŠ è¿›list
 		List<String> list=new ArrayList<String>();
 		for (String string : str) {
 			list.add(string);
 		}
 		System.out.println(list);
 		
-		//·½Ê½¶ş£º
+		//æ–¹å¼äºŒï¼š
 		List<String> list2=new ArrayList<String>(Arrays.asList(str));
 		System.out.println(list2);
 		
-		//·½Ê½Èı£º
-		//Í¬·½·¨¶şÒ»ÑùÊ¹ÓÃÁËasList()·½·¨¡£Õâ²»ÊÇ×îºÃµÄ£¬
-		//ÒòÎªasList()·µ»ØµÄÁĞ±íµÄ´óĞ¡ÊÇ¹Ì¶¨µÄ¡£
-		//ÊÂÊµÉÏ£¬·µ»ØµÄÁĞ±í²»ÊÇjava.util.ArrayListÀà£¬¶øÊÇ¶¨ÒåÔÚjava.util.ArraysÖĞÒ»¸öË½ÓĞ¾²Ì¬Ààjava.util.Arrays.ArrayList
-		//ÎÒÃÇÖªµÀArrayListµÄÊµÏÖ±¾ÖÊÉÏÊÇÒ»¸öÊı×é£¬¶øasList()·µ»ØµÄÁĞ±íÊÇÓÉÔ­Ê¼Êı×éÖ§³ÖµÄ¹Ì¶¨´óĞ¡µÄÁĞ±í¡£
-		//ÕâÖÖÇé¿öÏÂ£¬Èç¹ûÌí¼Ó»òÉ¾³ıÁĞ±íÖĞµÄÔªËØ£¬³ÌĞò»áÅ×³öÒì³£UnsupportedOperationException¡£
-		//java.util.Arrays.ArrayListÀà¾ßÓĞ set()£¬get()£¬contains()µÈ·½·¨£¬µ«ÊÇ²»¾ßÓĞÌí¼Óadd()»òÉ¾³ıremove()·½·¨,ËùÒÔµ÷ÓÃadd()·½·¨»á±¨´í¡£
+		//æ–¹å¼ä¸‰ï¼š
+		//åŒæ–¹æ³•äºŒä¸€æ ·ä½¿ç”¨äº†asList()æ–¹æ³•ã€‚è¿™ä¸æ˜¯æœ€å¥½çš„ï¼Œ
+		//å› ä¸ºasList()è¿”å›çš„åˆ—è¡¨çš„å¤§å°æ˜¯å›ºå®šçš„ã€‚
+		//äº‹å®ä¸Šï¼Œè¿”å›çš„åˆ—è¡¨ä¸æ˜¯java.util.ArrayListç±»ï¼Œè€Œæ˜¯å®šä¹‰åœ¨java.util.Arraysä¸­ä¸€ä¸ªç§æœ‰é™æ€ç±»java.util.Arrays.ArrayList
+		//æˆ‘ä»¬çŸ¥é“ArrayListçš„å®ç°æœ¬è´¨ä¸Šæ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œè€ŒasList()è¿”å›çš„åˆ—è¡¨æ˜¯ç”±åŸå§‹æ•°ç»„æ”¯æŒçš„å›ºå®šå¤§å°çš„åˆ—è¡¨ã€‚
+		//è¿™ç§æƒ…å†µä¸‹ï¼Œå¦‚æœæ·»åŠ æˆ–åˆ é™¤åˆ—è¡¨ä¸­çš„å…ƒç´ ï¼Œç¨‹åºä¼šæŠ›å‡ºå¼‚å¸¸UnsupportedOperationExceptionã€‚
+		//java.util.Arrays.ArrayListç±»å…·æœ‰ set()ï¼Œget()ï¼Œcontains()ç­‰æ–¹æ³•ï¼Œä½†æ˜¯ä¸å…·æœ‰æ·»åŠ add()æˆ–åˆ é™¤remove()æ–¹æ³•,æ‰€ä»¥è°ƒç”¨add()æ–¹æ³•ä¼šæŠ¥é”™ã€‚
 		List<String> list3 = Arrays.asList(str);
 		//list3.remove(1);
 		boolean contains = list3.contains("l");
 		System.out.println(contains);
 		System.out.println(list3);
 		
-		//·½Ê½ËÄ£ºÊ¹ÓÃCollections.addAll()
+		//æ–¹å¼å››ï¼šä½¿ç”¨Collections.addAll()
 		List<String> list4=new ArrayList<String>(str.length);
 		Collections.addAll(list4, str);
 		System.out.println(list4);
 		
-		//·½Ê½Îå£ºÊ¹ÓÃStreamÖĞµÄCollectorÊÕ¼¯Æ÷
-		//×ª»»ºóµÄList ÊôÓÚ java.util.ArrayList ÄÜ½øĞĞÕı³£µÄÔöÉ¾²é²Ù×÷
+		//æ–¹å¼äº”ï¼šä½¿ç”¨Streamä¸­çš„Collectoræ”¶é›†å™¨
+		//è½¬æ¢åçš„List å±äº java.util.ArrayList èƒ½è¿›è¡Œæ­£å¸¸çš„å¢åˆ æŸ¥æ“ä½œ
 		List<String> list5=Stream.of(str).collect(Collectors.toList());
 		System.out.println(list5);
 	}

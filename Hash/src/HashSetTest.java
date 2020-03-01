@@ -1,8 +1,8 @@
 import java.util.HashSet;
 
 /**
- * ´æ´¢µÄÔªËØ²»ÄÜÖØ¸´
- * ÖØĞ´¶ÔÏóµÄequalsºÍhashCodeºÜÖØÒª
+ * å­˜å‚¨çš„å…ƒç´ ä¸èƒ½é‡å¤
+ * é‡å†™å¯¹è±¡çš„equalså’ŒhashCodeå¾ˆé‡è¦
  * @author listener
  *
  */

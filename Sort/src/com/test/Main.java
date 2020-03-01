@@ -10,48 +10,48 @@ import com.sort.MaoPao;
 import com.sort.XuanZe;
 
 public class Main {
-	//Êı×é´óĞ¡
+	//æ•°ç»„å¤§å°
 	static int size = 100000;
-	//ÔËĞĞ¿ªÊ¼Ê±¼ä
+	//è¿è¡Œå¼€å§‹æ—¶é—´
 	static long start;
-	//ÔËĞĞ½áÊøÊ±¼ä
+	//è¿è¡Œç»“æŸæ—¶é—´
 	static long end;
-	//³õÊ¼»¯Êı×é
+	//åˆå§‹åŒ–æ•°ç»„
 	static int[] arr;
 	static String str = "aaa";
-	//¸÷ÖÖÅÅĞòµÄÊ±¼ä(ms)
+	//å„ç§æ’åºçš„æ—¶é—´(ms)
 	public static void main(String[] args) {
-		//Arrays.sort Ä¬ÈÏÊ¹ÓÃ¿ìÅÅ£¬µ«ÊÇ»á¸ù¾İÊı¾İµÄ³¤¶ÈÔÚÊ¹ÓÃÉı¼¶°æ¿ìÅÅ dualpivotquicksort
+		//Arrays.sort é»˜è®¤ä½¿ç”¨å¿«æ’ï¼Œä½†æ˜¯ä¼šæ ¹æ®æ•°æ®çš„é•¿åº¦åœ¨ä½¿ç”¨å‡çº§ç‰ˆå¿«æ’ dualpivotquicksort
 		System.out.println("-----------Arrays.sort-------------------");
 		giveNum(size);
 		start = System.currentTimeMillis();
 		Arrays.sort(arr);
 		end = System.currentTimeMillis();
 		System.out.println(end-start);
-		System.out.println("-----------¹é²¢---------------------------");
+		System.out.println("-----------å½’å¹¶---------------------------");
 		giveNum(size);
 		start = System.currentTimeMillis();
 		GuiBing.sort(arr, 0, arr.length-1);
 		end = System.currentTimeMillis();
 		System.out.println(end-start);
-		System.out.println("-----------¿ìÅÅ---------------------------");
+		System.out.println("-----------å¿«æ’---------------------------");
 		giveNum(size);
 		start = System.currentTimeMillis();
 		KuaiPai.sort(arr, 0, arr.length-1);
 		end = System.currentTimeMillis();
 		System.out.println(end-start);
-		System.out.println("-----------Ñ¡Ôñ---------------------------");
+		System.out.println("-----------é€‰æ‹©---------------------------");
 		giveNum(size);
 		System.out.println(XuanZe.sort(arr, start, end));
-		System.out.println("-----------Ã°Åİ---------------------------");
+		System.out.println("-----------å†’æ³¡---------------------------");
 		giveNum(size);
 		System.out.println(MaoPao.sort(arr, start, end));
-		System.out.println("-----------²åÈë---------------------------");
+		System.out.println("-----------æ’å…¥---------------------------");
 		giveNum(size);
 		System.out.println(ChaRu.sort(arr, start, end));
 		
 	}
-	// ¸³Öµ
+	// èµ‹å€¼
 	public static void giveNum(int size) {
 		arr = new int[size];
 		Random random = new Random();

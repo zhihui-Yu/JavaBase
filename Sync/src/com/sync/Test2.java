@@ -2,7 +2,7 @@ package com.sync;
 
 
 /**
- * Á½¸ö¶ÔÏóÏàµ±ÓÚÁ½°ÑËø  ËùÒÔ²»Í¬²½
+ * ä¸¤ä¸ªå¯¹è±¡ç›¸å½“äºä¸¤æŠŠé”  æ‰€ä»¥ä¸åŒæ­¥
  * @author listener
  *
  */
@@ -21,13 +21,13 @@ public class Test2 implements Runnable{
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		// newĞÂÊµÀı
+		// newæ–°å®ä¾‹
 		Thread t1 = new Thread(new Test2());
-		// newĞÂÊµÀı
+		// newæ–°å®ä¾‹
 		Thread t2 = new Thread(new Test2());
 		t1.start();
 		t2.start();
-		// joinº¬Òå:µ±Ç°Ïß³ÌAµÈ´ıthreadÏß³ÌÖÕÖ¹Ö®ºó²ÅÄÜ´Óthread.join()·µ»Ø
+		// joinå«ä¹‰:å½“å‰çº¿ç¨‹Aç­‰å¾…threadçº¿ç¨‹ç»ˆæ­¢ä¹‹åæ‰èƒ½ä»thread.join()è¿”å›
 		t1.join();
 		t2.join();
 		System.out.println(i);

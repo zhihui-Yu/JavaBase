@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * lock µÄÓÃ·¨
+ * lock çš„ç”¨æ³•
  * @author listener
  *
  */
@@ -31,7 +31,7 @@ public class Test1 {
 
     }
 }
-//condition.singal »½ĞÑÒ»¸öµÈ´ıÏß³Ì¡£
+//condition.singal å”¤é†’ä¸€ä¸ªç­‰å¾…çº¿ç¨‹ã€‚
 class ShareResource{
     private int number = 1; // A:1, B:2, C:3
     private Lock lock = new ReentrantLock();
@@ -40,9 +40,9 @@ class ShareResource{
     private Condition conditionC = lock.newCondition();
     public void print5(){
         try {
-        	//ÉÏËø
+        	//ä¸Šé”
             lock.lock();
-            //Èç¹û²»µÈ  ÔòµÈ´ı
+            //å¦‚æœä¸ç­‰  åˆ™ç­‰å¾…
             while (number != 1){
                 conditionA.await();
             }
@@ -50,12 +50,12 @@ class ShareResource{
            System.out.println(Thread.currentThread().getName());
            
             number++;
-            //»½ĞÑÒ»¸öµÈ´ıÏß³Ì
+            //å”¤é†’ä¸€ä¸ªç­‰å¾…çº¿ç¨‹
             conditionB.signal();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-        	//½âËø
+        	//è§£é”
             lock.unlock();
         }
     }

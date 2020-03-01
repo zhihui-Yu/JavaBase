@@ -3,7 +3,7 @@ package com.sync;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Ïß³ÌÖĞ¶Ï ÔÚ»ñÈ¡Ëø×ÊÔ´µÄÏß³ÌÊÇ²»Æğ×÷ÓÃµÄ(µÈ´ıÌ¬Ïß³Ì²»Æğ×÷ÓÃ)
+ * çº¿ç¨‹ä¸­æ–­ åœ¨è·å–é”èµ„æºçš„çº¿ç¨‹æ˜¯ä¸èµ·ä½œç”¨çš„(ç­‰å¾…æ€çº¿ç¨‹ä¸èµ·ä½œç”¨)
  * @author listener
  *
  */
@@ -14,16 +14,16 @@ public class Test5 implements Runnable {
 	}
 
 	/**
-     * ÔÚ¹¹ÔìÆ÷ÖĞ´´½¨ĞÂÏß³Ì²¢Æô¶¯»ñÈ¡¶ÔÏóËø
+     * åœ¨æ„é€ å™¨ä¸­åˆ›å»ºæ–°çº¿ç¨‹å¹¶å¯åŠ¨è·å–å¯¹è±¡é”
      */
     public Test5() {
     	System.out.println("Test5 init....");
-        //³õÊ¼»¯Ê±£¬´´½¨Ïß³Ì ²¢Ö´ĞĞ
+        //åˆå§‹åŒ–æ—¶ï¼Œåˆ›å»ºçº¿ç¨‹ å¹¶æ‰§è¡Œ
         new Thread() {
             public void run() {
             	System.out.println(Thread.currentThread().getName()+": run ...");
             	method();
-            	//·ÅÆúËø
+            	//æ”¾å¼ƒé”
             	try {
 					wait();
 				} catch (InterruptedException e) {
@@ -36,10 +36,10 @@ public class Test5 implements Runnable {
     @Override
 	public void run() {
 		System.out.println(Thread.currentThread().getName()+" run ....");
-		// ÖĞ¶ÏÅĞ¶Ï
+		// ä¸­æ–­åˆ¤æ–­
 		while (true) {
 			if (Thread.interrupted()) {
-				System.out.println("ÖĞ¶ÏÏß³Ì!!");
+				System.out.println("ä¸­æ–­çº¿ç¨‹!!");
 				break;
 			} else {
 				method();
@@ -50,11 +50,11 @@ public class Test5 implements Runnable {
 	public static void main(String[] args) throws InterruptedException {
 		Test5 sync = new Test5();
 		Thread t = new Thread(sync);
-		// ÔÙ´´½¨µÄ¶ÔÏóÔÚÔËĞĞÊ±£¬»ñÈ¡²»µ½Ëø×ÊÔ´
+		// å†åˆ›å»ºçš„å¯¹è±¡åœ¨è¿è¡Œæ—¶ï¼Œè·å–ä¸åˆ°é”èµ„æº
 		t.start();
-		//Ë¯1Ãë
+		//ç¡1ç§’
 		TimeUnit.SECONDS.sleep(1);
-		// ÖĞ¶ÏÏß³Ì,ÎŞ·¨ÉúĞ§
+		// ä¸­æ–­çº¿ç¨‹,æ— æ³•ç”Ÿæ•ˆ
 		t.interrupt();
 		System.out.println("end");
 	}

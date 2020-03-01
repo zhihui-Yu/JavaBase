@@ -14,7 +14,7 @@ public class Str {
 		if(len2 == 0) {
 			return 0;
 		}
-		//比较次数
+		//姣旇緝娆℃暟
 		int len = len1 - len2 + 1;
 		int k = 0,l = 0;
 		int count = 0;

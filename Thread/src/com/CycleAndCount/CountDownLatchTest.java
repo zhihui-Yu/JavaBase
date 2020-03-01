@@ -7,23 +7,23 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * CountDownLatchÖ´ĞĞÒ»¸öËãÒ»¸ö
- * ×èÈûÖ÷Ïß³Ì
+ * CountDownLatchæ‰§è¡Œä¸€ä¸ªç®—ä¸€ä¸ª
+ * é˜»å¡ä¸»çº¿ç¨‹
  * @author listener
  *
  */
 public class CountDownLatchTest implements Runnable{
- 	//´´½¨³õÊ¼»¯3¸öÏß³ÌµÄÏß³Ì³Ø
+ 	//åˆ›å»ºåˆå§‹åŒ–3ä¸ªçº¿ç¨‹çš„çº¿ç¨‹æ± 
     private ExecutorService                    threadPool     = Executors.newFixedThreadPool(3);
-    //±£´æÃ¿¸öÑ§ÉúµÄÆ½¾ù³É¼¨
+    //ä¿å­˜æ¯ä¸ªå­¦ç”Ÿçš„å¹³å‡æˆç»©
     private ConcurrentHashMap<String, Integer> map            = new ConcurrentHashMap<>();
-    //¼ÆÊı
+    //è®¡æ•°
     private CountDownLatch                     countDownLatch = new CountDownLatch(3);
 
     private void count() {
         for (int i = 0; i < 3; i++) {
             threadPool.execute(() -> {
-                //¼ÆËãÃ¿¸öÑ§ÉúµÄÆ½¾ù³É¼¨,´úÂëÂÔ()¼ÙÉèÎª60~100µÄËæ»úÊı
+                //è®¡ç®—æ¯ä¸ªå­¦ç”Ÿçš„å¹³å‡æˆç»©,ä»£ç ç•¥()å‡è®¾ä¸º60~100çš„éšæœºæ•°
                 int score = (int) (Math.random() * 40 + 60);
                 try {
                     Thread.sleep(Math.round(Math.random() * 1000));
@@ -31,7 +31,7 @@ public class CountDownLatchTest implements Runnable{
                     e.printStackTrace();
                 }
                 map.put(Thread.currentThread().getName(), score);
-                System.out.println(Thread.currentThread().getName() + "Í¬Ñ§µÄÆ½¾ù³É¼¨Îª" + score);
+                System.out.println(Thread.currentThread().getName() + "åŒå­¦çš„å¹³å‡æˆç»©ä¸º" + score);
                 countDownLatch.countDown();
             });
         }
@@ -42,7 +42,7 @@ public class CountDownLatchTest implements Runnable{
     @Override
     public void run() {
         try {
-        	//µÈ count = 0 ¸ÃÏß³Ì±»»½ĞÑ
+        	//ç­‰ count = 0 è¯¥çº¿ç¨‹è¢«å”¤é†’
             countDownLatch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -52,7 +52,7 @@ public class CountDownLatchTest implements Runnable{
         for (String s : set) {
             result += map.get(s);
         }
-        System.out.println("ÈıÈËÆ½¾ù³É¼¨Îª:" + (result / 3) + "·Ö");
+        System.out.println("ä¸‰äººå¹³å‡æˆç»©ä¸º:" + (result / 3) + "åˆ†");
     }
 
     public static void main(String[] args) throws InterruptedException {

@@ -8,24 +8,24 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * CyclicBarrier ËùÓĞÏß³Ì¶¼µ½ÁË²ÅÖ´ĞĞ
- * Ïß³ÌÖĞ¶ÏÅ×Òì³£
- * ²»×èÈûÖ÷Ïß³Ì
+ * CyclicBarrier æ‰€æœ‰çº¿ç¨‹éƒ½åˆ°äº†æ‰æ‰§è¡Œ
+ * çº¿ç¨‹ä¸­æ–­æŠ›å¼‚å¸¸
+ * ä¸é˜»å¡ä¸»çº¿ç¨‹
  * @author listener
  *
  */
 public class CyclicTest implements Runnable{
-	//´´½¨³õÊ¼»¯3¸öÏß³ÌµÄÏß³Ì³Ø
+	//åˆ›å»ºåˆå§‹åŒ–3ä¸ªçº¿ç¨‹çš„çº¿ç¨‹æ± 
     private ExecutorService                    threadPool     = Executors.newFixedThreadPool(3);
-    //´´½¨3¸öCyclicBarrier¶ÔÏó,Ö´ĞĞÍêºóÖ´ĞĞµ±Ç°ÀàµÄrun·½·¨
+    //åˆ›å»º3ä¸ªCyclicBarrierå¯¹è±¡,æ‰§è¡Œå®Œåæ‰§è¡Œå½“å‰ç±»çš„runæ–¹æ³•
     private CyclicBarrier                      cb             = new CyclicBarrier(3, this);
-    //±£´æÃ¿¸öÑ§ÉúµÄÆ½¾ù³É¼¨
+    //ä¿å­˜æ¯ä¸ªå­¦ç”Ÿçš„å¹³å‡æˆç»©
     private ConcurrentHashMap<String, Integer> map            = new ConcurrentHashMap<>();
 
     private void count() {
         for (int i = 0; i < 3; i++) {
             threadPool.execute(() -> {
-                //¼ÆËãÃ¿¸öÑ§ÉúµÄÆ½¾ù³É¼¨,´úÂëÂÔ()¼ÙÉèÎª60~100µÄËæ»úÊı
+                //è®¡ç®—æ¯ä¸ªå­¦ç”Ÿçš„å¹³å‡æˆç»©,ä»£ç ç•¥()å‡è®¾ä¸º60~100çš„éšæœºæ•°
                 int score = (int) (Math.random() * 40 + 60);
                 try {
                     Thread.sleep(Math.round(Math.random() * 1000));
@@ -33,9 +33,9 @@ public class CyclicTest implements Runnable{
                     e.printStackTrace();
                 }
                 map.put(Thread.currentThread().getName(), score);
-                System.out.println(Thread.currentThread().getName() + "Í¬Ñ§µÄÆ½¾ù³É¼¨Îª" + score);
+                System.out.println(Thread.currentThread().getName() + "åŒå­¦çš„å¹³å‡æˆç»©ä¸º" + score);
                 try {
-                    //Ö´ĞĞÍêÔËĞĞawait(),µÈ´ıËùÓĞÑ§ÉúÆ½¾ù³É¼¨¶¼¼ÆËãÍê±Ï
+                    //æ‰§è¡Œå®Œè¿è¡Œawait(),ç­‰å¾…æ‰€æœ‰å­¦ç”Ÿå¹³å‡æˆç»©éƒ½è®¡ç®—å®Œæ¯•
                     cb.await();
                 } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();
@@ -52,7 +52,7 @@ public class CyclicTest implements Runnable{
         for (String s : set) {
             result += map.get(s);
         }
-        System.out.println("ÈıÈËÆ½¾ù³É¼¨Îª:" + (result / 3) + "·Ö");
+        System.out.println("ä¸‰äººå¹³å‡æˆç»©ä¸º:" + (result / 3) + "åˆ†");
     }
 
     public static void main(String[] args) throws InterruptedException {
