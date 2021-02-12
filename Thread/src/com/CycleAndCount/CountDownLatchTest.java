@@ -9,16 +9,16 @@ import java.util.concurrent.Executors;
 /**
  * CountDownLatch执行一个算一个
  * 阻塞主线程
- * @author listener
  *
+ * @author listener
  */
-public class CountDownLatchTest implements Runnable{
- 	//创建初始化3个线程的线程池
-    private ExecutorService                    threadPool     = Executors.newFixedThreadPool(3);
+public class CountDownLatchTest implements Runnable {
+    //创建初始化3个线程的线程池
+    private ExecutorService threadPool = Executors.newFixedThreadPool(3);
     //保存每个学生的平均成绩
-    private ConcurrentHashMap<String, Integer> map            = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
     //计数
-    private CountDownLatch                     countDownLatch = new CountDownLatch(3);
+    private CountDownLatch countDownLatch = new CountDownLatch(3);
 
     private void count() {
         for (int i = 0; i < 3; i++) {
@@ -42,7 +42,7 @@ public class CountDownLatchTest implements Runnable{
     @Override
     public void run() {
         try {
-        	//等 count = 0 该线程被唤醒
+            //等 count = 0 该线程被唤醒
             countDownLatch.await();
         } catch (InterruptedException e) {
             e.printStackTrace();

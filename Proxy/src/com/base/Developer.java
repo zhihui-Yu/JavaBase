@@ -1,21 +1,21 @@
 package com.base;
 
-public class Developer implements IDeveloper{
-	private String name;
-	
-	public Developer() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+public class Developer implements IDeveloper {
+    private String name;
 
-	public Developer(String name) {
-		super();
-		this.name = name;
-	}
+    public Developer() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void writeCode() {
-		//System.out.println("Developer " + name + " writes code");
-	}
+    public Developer(String name) {
+        super();
+        this.name = name;
+    }
+
+    @Override
+    public void writeCode() {
+        //System.out.println("Developer " + name + " writes code");
+    }
 
 }

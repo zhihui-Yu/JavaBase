@@ -11,16 +11,16 @@ import java.util.concurrent.Executors;
  * CyclicBarrier 所有线程都到了才执行
  * 线程中断抛异常
  * 不阻塞主线程
- * @author listener
  *
+ * @author listener
  */
-public class CyclicTest implements Runnable{
-	//创建初始化3个线程的线程池
-    private ExecutorService                    threadPool     = Executors.newFixedThreadPool(3);
+public class CyclicTest implements Runnable {
+    //创建初始化3个线程的线程池
+    private ExecutorService threadPool = Executors.newFixedThreadPool(3);
     //创建3个CyclicBarrier对象,执行完后执行当前类的run方法
-    private CyclicBarrier                      cb             = new CyclicBarrier(3, this);
+    private CyclicBarrier cb = new CyclicBarrier(3, this);
     //保存每个学生的平均成绩
-    private ConcurrentHashMap<String, Integer> map            = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 
     private void count() {
         for (int i = 0; i < 3; i++) {

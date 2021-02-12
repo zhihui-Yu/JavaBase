@@ -2,7 +2,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class TreeMapTest {
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         // 构造一个可用的TreeSet对象：传入对象实现 Comparable 接口 （按照年龄排序）
         Set<User> userSet = new TreeSet<>();
         userSet.add(new User(5, 32, "阿布1"));

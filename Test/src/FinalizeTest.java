@@ -1,16 +1,17 @@
 
 public class FinalizeTest {
-	 public static void main(String[] args) throws InterruptedException {
-	        Book book1 = new Book("天龙八部");
-	        
-	        new Book("哆啦a梦");
+    public static void main(String[] args) throws InterruptedException {
+        Book book1 = new Book("天龙八部");
 
-	        System.gc();
+        new Book("哆啦a梦");
 
-	        Thread.sleep(2000);
-	        System.out.println(book1);
-	    }
+        System.gc();
+
+        Thread.sleep(2000);
+        System.out.println(book1);
+    }
 }
+
 class Book {
 
     private boolean checkIn;
@@ -24,7 +25,7 @@ class Book {
     public void checkOut() {
         this.checkIn = false;
     }
-    
+
     /**
      * 最后一道保命机制
      */

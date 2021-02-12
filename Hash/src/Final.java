@@ -1,9 +1,9 @@
 
-public class Final /*extends Person*/{
+public class Final /*extends Person*/ {
 
-	public static void main(String[] args) {
-		//Person.ex = new Person();
-	}
+    public static void main(String[] args) {
+        //Person.ex = new Person();
+    }
 }	
 
 /*class Person {

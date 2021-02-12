@@ -1,5 +1,5 @@
 package com.base;
 
 public interface IDeveloper {
-	public void writeCode();
+    public void writeCode();
 }
