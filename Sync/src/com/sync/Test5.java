@@ -19,18 +19,18 @@ public class Test5 implements Runnable {
     public Test5() {
         System.out.println("Test5 init....");
         //初始化时，创建线程 并执行
-        new Thread() {
-            public void run() {
-                System.out.println(Thread.currentThread().getName() + ": run ...");
-                method();
-                //放弃锁
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    System.out.println(Thread.currentThread().getName() + ": interrupt ...");
-                }
-            }
-        }.start();
+//        new Thread() {
+//            public void run() {
+//                System.out.println(Thread.currentThread().getName() + ": run ...");
+//                method();
+//                //放弃锁
+//                try {
+//                    wait();
+//                } catch (InterruptedException e) {
+//                    System.out.println(Thread.currentThread().getName() + ": interrupt ...");
+//                }
+//            }
+//        }.start();
     }
 
     @Override
