@@ -6,7 +6,7 @@ public class ChaRu {
      * 大于则不动，小于则与前一个数互换，然后再与前一个数比较
      * 如下去一直到大于前一个数的位置
      *
-     * @param a     传入的需排序的数组
+     * @param arr   传入的需排序的数组
      * @param start 开始时间
      * @param end   运行结束时间
      * @return

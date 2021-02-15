@@ -40,7 +40,6 @@ public class KuaiPai {
      * 将数组分成两边 在做快排，直到左右不可分
      *
      * @param arr   数组
-     * @param start 开始时间
      * @param begin 头指针位置
      * @param last  尾指针位置
      * @return
