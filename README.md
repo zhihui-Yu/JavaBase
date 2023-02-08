@@ -1,18 +1,22 @@
-<pre>
-仓库内容是学习Java时所用的一些测试demo：
+### Java案例：
 
-  1.  Cloneable              深克隆和浅克隆
-  2.  Compare                实现Compare和Comparator的区别
-  3.  Hash                   Hash值比较、HashSet特点、Final特点
-  4.  Iterator               迭代器的用法
-  5.  KeyWord                volatiled和atomic
-  6.  List                   ArrayList和LinkedList的区别和删除时注意的点
-  7.  Proxy                  静态代理和动态代理
-  8.  Reflection             java 反射
-  9.  Sort                   多种排序方法
-  10. Sync                   synchronized 和 lock 的用法
-  11. Thread                 Thread创建、ThreadLocal用法、Deamon守护线程 CountDownLatch和CyclicBarrier区别
-  12. LanQiao                蓝桥杯的测试
-  13. LeetCode               在LeetCode刷的题
-  14. Test                   一些偶尔的测试
-</\pre>
+----
+
+<pre>
+JavaBase
+├─ Clone                  深克隆和浅克隆
+├─ Compare                实现Compare和Comparator的区别
+├─ Hash                   Hash值比较、HashSet特点、Final特点
+├─ Iterator               迭代器的用法
+├─ KeyWord                volatile和atomic
+├─ LanQiao                蓝桥杯的测试
+├─ LeetCode               在LeetCode刷的题 [remove to https://github.com/zhihui-Yu/Leet-Code
+├─ List                   ArrayList和LinkedList的区别和删除时注意的点
+├─ NiuKe                  牛客网题目
+├─ Proxy                  静态代理和动态代理
+├─ Reflection             java 反射
+├─ Sort                   多种排序方法
+├─ Sync                   synchronized 和 lock 的用法
+├─ Test
+└─ Thread                 Thread创建、ThreadLocal用法、Deamon守护线程 CountDownLatch和CyclicBarrier区别
+</pre>
