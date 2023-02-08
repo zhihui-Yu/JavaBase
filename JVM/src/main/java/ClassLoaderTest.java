@@ -3,34 +3,32 @@ import java.util.Base64;
 /**
  * @author simple
  */
-public class ClassLoaderTest extends ClassLoader{
+public class ClassLoaderTest extends ClassLoader {
     public static void main(String[] args) {
         try {
+            new ClassLoaderTest().findClass("Hello").newInstance(); // 加载并初始化Hello类
             new ClassLoaderTest().findClass("jvm.Hello").newInstance(); // 加载并初始化Hello类
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
+            new ClassLoaderTest().findClass("jvm.Hello2").newInstance();
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
     }
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
+        // 可以对class做加解密
 
-        String helloBase64 = "yv66vgAAADQAHwoABgARCQASABMIABQKABUAFgcAFwcAGAEABjxpbml0PgEAAygpVgEABENvZGUBAA9MaW5lTnVtYmVyVGFibGUBABJMb2N" +
-            "hbFZhcmlhYmxlVGFibGUBAAR0aGlzAQALTGp2bS9IZWxsbzsBAAg8Y2xpbml0PgEAClNvdXJjZUZpbGUBAApIZWxsby5qYXZhDAAHAAgHABkMABoAGwEAGEhlb" +
-            "GxvIENsYXNzIEluaXRpYWxpemVkIQcAHAwAHQAeAQAJanZtL0hlbGxvAQAQamF2YS9sYW5nL09iamVjdAEAEGphdmEvbGFuZy9TeXN0ZW0BAANvdXQBABVMamF2" +
-            "YS9pby9QcmludFN0cmVhbTsBABNqYXZhL2lvL1ByaW50U3RyZWFtAQAHcHJpbnRsbgEAFShMamF2YS9sYW5nL1N0cmluZzspVgAhAAUABgAAAAAAAgABAAcACA" +
-            "ABAAkAAAAvAAEAAQAAAAUqtwABsQAAAAIACgAAAAYAAQAAAAMACwAAAAwAAQAAAAUADAANAAAACAAOAAgAAQAJAAAAJQACAAAAAAAJsgACEgO2AASxAAAAAQAK" +
-            "AAAACgACAAAABgAIAAcAAQAPAAAAAgAQ";
-
-        byte[] bytes = decode(helloBase64);
-        return defineClass(name,bytes,0,bytes.length);
+        byte[] bytes;
+        try {
+            bytes = FileUtils.binRead("JVM/src/main/java/Hello.class"); // 生成class文件： javac Hello.java
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return defineClass(name, bytes, 0, bytes.length);
     }
 
-    public byte[] decode(String base64){
+    public static byte[] decode(String base64) {
+//        Base64.getMimeDecoder() : 带 Mime 适用于那些base64格式带换行的
         return Base64.getDecoder().decode(base64);
     }
 }

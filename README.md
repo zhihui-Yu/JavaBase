@@ -8,9 +8,11 @@ JavaBase
 ├─ Compare                实现Compare和Comparator的区别
 ├─ Hash                   Hash值比较、HashSet特点、Final特点
 ├─ Iterator               迭代器的用法
+├─ JVM                    GC,JVM机制实验
 ├─ KeyWord                volatile和atomic
 ├─ LanQiao                蓝桥杯的测试
 ├─ LeetCode               在LeetCode刷的题 [remove to https://github.com/zhihui-Yu/Leet-Code
+├─ LimitingAlgorithm      限流算法实现
 ├─ List                   ArrayList和LinkedList的区别和删除时注意的点
 ├─ NiuKe                  牛客网题目
 ├─ Proxy                  静态代理和动态代理
