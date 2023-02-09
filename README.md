@@ -12,7 +12,7 @@ JavaBase
 ├─ KeyWord                volatile和atomic
 ├─ LanQiao                蓝桥杯的测试
 ├─ LeetCode               在LeetCode刷的题 [remove to https://github.com/zhihui-Yu/Leet-Code
-├─ LimitingAlgorithm      限流算法实现
+├─ LimitingAlgorithm      限流算法实现：固定窗口，滑动窗口，漏桶，令牌桶。 [分布式redis实现可自己查询，皆有]
 ├─ List                   ArrayList和LinkedList的区别和删除时注意的点
 ├─ NiuKe                  牛客网题目
 ├─ Proxy                  静态代理和动态代理
