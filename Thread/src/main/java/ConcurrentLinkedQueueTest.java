@@ -13,20 +13,17 @@ public class ConcurrentLinkedQueueTest {
 
         // 3. 多线程清空数组
         for (int i = 0; i < 10; i++) {
-            new Thread() {
-                @Override
-                public void run() {
-                    while (!queue.isEmpty()) {
-                        Integer remove = queue.poll();
-                        System.out.println(Thread.currentThread().getName() + " delete: " + remove);
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+            new Thread(() -> {
+                while (!queue.isEmpty()) {
+                    Integer remove = queue.poll();
+                    System.out.println(Thread.currentThread().getName() + " delete: " + remove);
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
-            }.start();
+            }).start();
         }
 
         Thread.sleep(1000);

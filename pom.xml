@@ -20,6 +20,7 @@
         <module>Compare</module>
         <module>Hash</module>
         <module>Iterator</module>
+        <module>Http</module>
         <module>KeyWord</module>
         <module>LanQiao</module>
         <module>LeetCode</module>
