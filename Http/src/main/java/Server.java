@@ -7,6 +7,7 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
 import java.util.Iterator;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
 
 import static java.nio.channels.SelectionKey.OP_ACCEPT;
@@ -24,6 +25,8 @@ public class Server {
     private final Selector RW_SELECTOR;
     private final Selector ACCEPT_SELECTOR;
     private final ServerSocketChannel socketChannel;
+
+    private AtomicBoolean rwRunning = new AtomicBoolean(false);
 
 
     Server(int port) throws Exception {
@@ -59,11 +62,14 @@ public class Server {
     }
 
     private void runRWSelector() {
+        if (!rwRunning.get()) {
+            rwRunning.set(true);
+        }
         new Thread(() -> {
             System.out.println(threadName() + ": running");
             while (true) {
                 try {
-                    RW_SELECTOR.select();
+                    RW_SELECTOR.select(); // 下次accept 后要才能select， close后不能？
                     watchKeys(RW_SELECTOR, key -> {
                         if (key.isReadable()) {
                             read(key);
@@ -99,11 +105,15 @@ public class Server {
             do {
                 buffer.clear();
                 int len = channel.read(buffer);
+                if (len == -1) {
+                    channel.close();
+                    System.out.println("close socket");
+                    return;
+                }
                 sb.append(new String(buffer.array(), 0, len, Charset.defaultCharset()));
             } while (buffer.remaining() == 0);
             System.out.println("received msg from " + getClientAddress(channel.socket()) + ": " + sb.toString());
-
-            channel.write(ByteBuffer.wrap("Server received".getBytes()));
+            channel.register(RW_SELECTOR, SelectionKey.OP_WRITE);
         } catch (Exception e) {
             System.out.println(threadName() + "-ERROR：");
             e.printStackTrace();
@@ -111,8 +121,15 @@ public class Server {
     }
 
     private void write(SelectionKey key) {
-        SocketChannel channel = (SocketChannel) key.channel();
-        System.out.println("write msg to client [" + getClientAddress(channel.socket()) + "] ");
+        try {
+            SocketChannel channel = (SocketChannel) key.channel();
+            channel.write(ByteBuffer.wrap("Server received".getBytes()));
+            channel.register(RW_SELECTOR, SelectionKey.OP_READ);
+            System.out.println("write msg to client [" + getClientAddress(channel.socket()) + "] ：Server received");
+        } catch (Exception e) {
+            System.out.println(threadName() + "-ERROR：");
+            e.printStackTrace();
+        }
     }
 
     private void connect(SelectionKey key) {
@@ -124,9 +141,10 @@ public class Server {
             ServerSocketChannel channel = (ServerSocketChannel) key.channel();
             SocketChannel sc = channel.accept();
             sc.configureBlocking(false);
+            socketChannel.register(ACCEPT_SELECTOR, OP_ACCEPT);
             sc.register(RW_SELECTOR, SelectionKey.OP_READ | SelectionKey.OP_WRITE);
             runRWSelector();
-            System.out.println("accept a client: " + channel.socket().getInetAddress().getHostAddress());
+            System.out.println("accept a client: " + channel.socket().getInetAddress().getCanonicalHostName());
         } catch (Exception e) {
             System.out.println(threadName() + "-ERROR：");
             e.printStackTrace();

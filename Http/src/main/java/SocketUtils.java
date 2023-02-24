@@ -13,7 +13,9 @@ public class SocketUtils {
         do {
             buffer.clear();
             int len = channel.read(buffer);
-            sb.append(new String(buffer.array(), 0, len, Charset.defaultCharset()));
+            if (len != -1) {
+                sb.append(new String(buffer.array(), 0, len, Charset.defaultCharset()));
+            }
         } while (buffer.remaining() == 0);
         System.out.println("received msg from " + getClientAddress(channel.socket()) + ": " + sb.toString());
     }

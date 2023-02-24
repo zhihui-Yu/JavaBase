@@ -19,8 +19,8 @@ public class Client {
         byte[] bytes = new byte[1024];
         int len = inputStream.read(bytes);
         System.out.println(new String(bytes, 0, len, Charset.defaultCharset()));
-
-        Thread.sleep(20000);
+        Thread.sleep(5000);
+        socket.close();
     }
 
 }
