@@ -10,6 +10,12 @@ import java.util.Map;
  * @author simple
  */
 public class HttpUtils {
+
+    // ||----------------------------------------------||
+    // ||       Http -> socket -> connect              ||
+    // ||----------------------------------------------||
+
+
     public static HttpURLConnection getConn(String url) throws Exception {
         URL httpUrl = new URL(url);
         return (HttpURLConnection) httpUrl.openConnection();

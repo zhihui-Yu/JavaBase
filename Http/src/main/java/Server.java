@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -21,7 +22,6 @@ public class Server {
     }
 
     // 执行select()前 必须要先把key注册进去
-
     private final Selector RW_SELECTOR;
     private final Selector ACCEPT_SELECTOR;
     private final ServerSocketChannel socketChannel;
@@ -64,6 +64,9 @@ public class Server {
     private void runRWSelector() {
         if (!rwRunning.get()) {
             rwRunning.set(true);
+        } else {
+            RW_SELECTOR.wakeup();
+            return;
         }
         new Thread(() -> {
             System.out.println(threadName() + ": running");
@@ -107,6 +110,7 @@ public class Server {
                 int len = channel.read(buffer);
                 if (len == -1) {
                     channel.close();
+//                    key.cancel(); // 如果 channel 关闭了， key 可以不管，因为已经不会再select该channel了
                     System.out.println("close socket");
                     return;
                 }
@@ -117,6 +121,14 @@ public class Server {
         } catch (Exception e) {
             System.out.println(threadName() + "-ERROR：");
             e.printStackTrace();
+            if (e instanceof IOException) { // 异常中断导致 channel.read 异常，需要关闭连接
+                try {
+                    key.channel().close();
+//                    key.cancel();
+                } catch (Exception exception) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
