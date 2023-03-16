@@ -16,9 +16,14 @@ public class HttpUtils {
     // ||----------------------------------------------||
 
 
-    public static HttpURLConnection getConn(String url) throws Exception {
-        URL httpUrl = new URL(url);
-        return (HttpURLConnection) httpUrl.openConnection();
+    public static HttpURLConnection getConn(String url) {
+        try {
+            URL httpUrl = new URL(url);
+            return (HttpURLConnection) httpUrl.openConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static InputStream getInputStream(String url, Map<String, String> reqProperties) throws Exception {
@@ -35,6 +40,7 @@ public class HttpUtils {
     }
 
     public static void main(String[] args) throws Exception {
+
         byte[] bytes = new byte[10240];
         HttpURLConnection conn = getConn("https://www.baidu.com");
         conn.setChunkedStreamingMode(100);
