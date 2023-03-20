@@ -29,6 +29,7 @@ public class HttpUtils {
     public static InputStream getInputStream(String url, Map<String, String> reqProperties) throws Exception {
         HttpURLConnection conn = getConn(url);
         reqProperties.forEach(conn::setRequestProperty);
+//        System.out.println("rec len: " + conn.getContentLength()+"-- header:"+reqProperties.get("RANGE"));
         return conn.getInputStream();
     }
 

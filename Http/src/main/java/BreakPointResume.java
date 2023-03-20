@@ -22,14 +22,14 @@ public class BreakPointResume {
     }
 
     // test https first
-    String link = "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4";  // len: 68936214
-//    String link = "http://vjs.zencdn.net/v/oceans.mp4";
+//    String link = "http://mirror.aarnet.edu.au/pub/TED-talks/911Mothers_2010W-480p.mp4";  // len: 68936214
+    String link = "http://vjs.zencdn.net/v/oceans.mp4";
     String fileName;
 
     int downloadThread = 10;
-    int segment = 1024 * 1024; // 1M
+    static int segment = 1024 * 1024; // 1M
 
-    public static final AtomicLong atomic = new AtomicLong(0);
+    public static final AtomicLong atomic = new AtomicLong(0); // store the actual download size
 
     CountDownLatch countDownLatch; // 全部下完的判断
     ExecutorService executor = Executors.newFixedThreadPool(downloadThread);
@@ -52,7 +52,7 @@ public class BreakPointResume {
         print("remote file name: %s \nremote file length: %s", fileName, fileLen);
 
         // 判断本地是否已经存在完整文件
-        if (localExists(fileName)) {
+        if (localExists(fileName) && new File(fileName).length() == fileLen) {
             // 完整则返回
             print("本地已下载完成");
             return;
@@ -62,7 +62,6 @@ public class BreakPointResume {
         List<Task> tasks = split(fileName, fileLen);
         print("split task size:" + tasks.size());
         tasks.forEach(executor::submit); // todo 失败重试？
-        // todo 下载完成度？
         // 总完成度
         new Thread(new LogTask(fileLen)).start();
 
@@ -114,7 +113,7 @@ public class BreakPointResume {
             if (taskSize - 1 == i) {
                 tasks.add(new Task((taskSize - 1) * segment, fileLen, fileName, link, countDownLatch));
             } else {
-                tasks.add(new Task(i * segment, (i + 1) * segment, fileName, link, countDownLatch));
+                tasks.add(new Task(i * segment, (i + 1) * segment - 1, fileName, link, countDownLatch));
             }
         }
         return tasks;
@@ -134,7 +133,7 @@ public class BreakPointResume {
     }
 
     public static class Task implements Callable<Boolean> {
-        private final int startLen;
+        private int startLen;
         private final int endLen;
 
         private final String fileName;
@@ -157,9 +156,56 @@ public class BreakPointResume {
             // 判断是否缺少该段文件，是则下载, 否则标记完成
             localFileName = String.format("%s-%s-%s", fileName, startLen, endLen);
             if (localExists(localFileName)) {
-                atomic.getAndAdd(endLen - startLen);
-                countDownLatch.countDown();
-                return true;
+                int len = len();
+                var dif = endLen - startLen;
+//                print("file: %s, len: %s, lost: %s", localFileName, len, dif - len);
+                if (len >= dif) { // 获取的文件长度gen
+                    atomic.getAndAdd(len);
+                    countDownLatch.countDown();
+                    return true;
+                } else {
+                    atomic.getAndAdd(len);
+                    startLen += len; // 不能+1， 假设从100-150，下载了30，那么100-129是下完的， 130-150还没下载
+                }
+            }
+
+            File file = new File(localFileName);
+            try (var ins = HttpUtils.getInputStream(link, Map.of("RANGE", "bytes=" + startLen + "-" + endLen))) {
+                // 获取输入流 保存到本地
+                var buffered = new BufferedInputStream(ins);
+                if (!file.exists()) file.createNewFile();
+                var fos = new FileOutputStream(file, true); // 存在则append
+                byte[] bytes = new byte[1024];
+                int len;
+                while ((len = buffered.read(bytes)) != -1) {
+                    fos.write(bytes, 0, len);
+                    atomic.getAndAdd(len);
+                }
+                fos.close();
+                buffered.close();
+            } catch (Exception e) {
+                if (file.exists()) file.delete();
+                e.printStackTrace();
+                return false;
+            }
+            countDownLatch.countDown();
+            return true;
+        }
+
+        //  有下载过，但是没下完，直接删掉，重新下载。
+//        @Override
+        public Boolean call2() { // 是否下完
+            // 判断是否缺少该段文件，是则下载, 否则标记完成
+            localFileName = String.format("%s-%s-%s", fileName, startLen, endLen);
+            if (localExists(localFileName)) {
+                var file = new File(localFileName);
+                if (file.length() < segment) {
+                    file.delete();
+                } else {
+                    atomic.getAndAdd(endLen - startLen);
+                    countDownLatch.countDown();
+                    return true;
+                }
             }
 
             File file = new File(localFileName);
@@ -186,12 +232,15 @@ public class BreakPointResume {
             return true;
         }
 
-        public String getLocalFileName() {
-            return localFileName;
-        }
 
-        public int getStartLen() {
-            return startLen;
+        private int len() {
+            return (int) new File(localFileName).length();
+//            try (var is = new FileInputStream(localFileName)) {
+//                return (int) is.getChannel().size();
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//            }
+//            return 0;
         }
     }
 
