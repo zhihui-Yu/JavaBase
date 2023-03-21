@@ -63,7 +63,7 @@ public class BreakPointResume {
         tasks.forEach(executor::submit); // todo 失败重试？
 
         // 总完成度
-        new Thread(new LogTask(fileLen)).start();
+        new Thread(new LogTask(fileLen, countDownLatch)).start();
 
         // 下载完成后合并文件
         countDownLatch.await();
@@ -107,7 +107,7 @@ public class BreakPointResume {
         int exceed = fileLen % SEGMENT;
         taskSize += exceed > 0 ? 1 : 0;
 
-        countDownLatch = new CountDownLatch(taskSize);
+        countDownLatch = new CountDownLatch(taskSize + 1); // more one for the log thread stop
 
         for (int i = 0; i < taskSize; i++) {
             if (taskSize - 1 == i) {

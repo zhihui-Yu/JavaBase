@@ -5,6 +5,7 @@ package break_point_resume;
  */
 public class LogUtils {
     public static void print(String content, Object... param) {
-        System.out.printf(content + "\n", param);
+        String name = Thread.currentThread().getName();
+        System.out.printf("[" + name + "] " + content + "\n", param);
     }
 }

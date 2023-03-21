@@ -119,4 +119,8 @@ public class DownloadTask implements Callable<Boolean> {
     public int getStartLen() {
         return startLen;
     }
+
+    public String taskName() {
+        return "Thread-" + localFileName;
+    }
 }
