@@ -1,3 +1,5 @@
+package http;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -135,9 +137,9 @@ public class Server {
     private void write(SelectionKey key) {
         try {
             SocketChannel channel = (SocketChannel) key.channel();
-            channel.write(ByteBuffer.wrap("Server received".getBytes()));
+            channel.write(ByteBuffer.wrap("http.Server received".getBytes()));
             channel.register(RW_SELECTOR, SelectionKey.OP_READ);
-            System.out.println("write msg to client [" + getClientAddress(channel.socket()) + "] ：Server received");
+            System.out.println("write msg to client [" + getClientAddress(channel.socket()) + "] ：http.Server received");
         } catch (Exception e) {
             System.out.println(threadName() + "-ERROR：");
             e.printStackTrace();
