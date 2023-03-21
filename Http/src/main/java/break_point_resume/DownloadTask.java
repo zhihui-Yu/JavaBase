@@ -89,7 +89,7 @@ public class DownloadTask implements Callable<Boolean> {
         }
 
         File file = new File(localFileName);
-        try (var ins = HttpUtils.getInputStream(link, Map.of("RANGE", "bytes=" + startLen + "-" + endLen))) {
+        try (var ins = HttpUtils.getInputStream(link, Map.of("RANGE", "bytes=" + startLen + "-" + endLen))) { // 0-10, 意味着 11个字节
             // 获取输入流 保存到本地
             var buffered = new BufferedInputStream(ins);
             if (file.createNewFile()) {
