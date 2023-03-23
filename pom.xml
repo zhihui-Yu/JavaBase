@@ -34,5 +34,7 @@
         <module>Thread</module>
         <module>JVM</module>
         <module>LimitingAlgorithm</module>
+        <module>java-agent</module>
+        <module>java-agent/agent</module>
     </modules>
 </project>

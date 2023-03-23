@@ -8,6 +8,7 @@ JavaBase
 ├─ Compare                实现Compare和Comparator的区别
 ├─ Hash                   Hash值比较、HashSet特点、Final特点
 ├─ Iterator               迭代器的用法
+├─ java-agent             javaagent 实践
 ├─ JVM                    GC,JVM机制实验
 ├─ KeyWord                volatile和atomic
 ├─ LanQiao                蓝桥杯的测试
